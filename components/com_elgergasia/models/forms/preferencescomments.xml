@@ -1,0 +1,16 @@
+<form> 
+	<fields addfieldpath="/components/com_elgergasia/models/fields/" >
+            <fieldset>
+                <field name="id" type="hidden" />
+                <field name="idUser" type="hidden" />
+                <field
+                    name="comments"
+                    type="textarea"
+                    cols="200"
+                    rows="10"
+                    label="COM_ELGERGASIA_COMMENTS"
+                   />
+                
+           </fieldset>
+	</fields>
+</form>

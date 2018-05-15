@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="jobs posts">
+        <message>
+            <![CDATA[job  posts page]]>
+        </message>
+    </layout>
+    <fields name="request">
+            <fieldset name="request">
+                <field name="controller" type="text"  size="40"
+                    label="COM_ELG_CONTROLLER"
+                    description="COM_ELG_CONTROLLER_DESC" default="jobs" />
+            </fieldset>
+    </fields>
+</metadata>

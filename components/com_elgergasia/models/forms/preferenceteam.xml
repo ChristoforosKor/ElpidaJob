@@ -1,0 +1,13 @@
+<form> 
+	<fields addfieldpath="/components/administrator/com_elgergasia/models/fields/" >
+            <fieldset name="basicset"  >
+                <field name="idUser" type="hidden" />
+                <field
+                    name="idUserTeam"
+                    type="text"
+					label="COM_ELGERGASIA_TEAM"
+                >
+                </field>
+           </fieldset>
+	</fields>
+</form>

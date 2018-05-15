@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_ELGERGASIA_MENU_REGISTER">
+        <message>
+            <![CDATA[COM_ELGERGASIA_MENU_REGISTER_DESC]]>
+        </message>
+    </layout>
+    <fields name="request">
+        <fieldset name="request">
+                <field
+                        name="controller"
+                        type="text"
+                        label="COM_ELGERGASIA_MENU_FIELD_CONTROLLER"
+                        description="COM_ELGERGASIA_MENU_FIELD_CONTROLLER_DESC"
+                        default="registration"
+                />
+        </fieldset>
+    </fields>
+</metadata>

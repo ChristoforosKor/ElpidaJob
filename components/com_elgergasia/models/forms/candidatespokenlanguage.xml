@@ -1,0 +1,28 @@
+<form>
+	<fields>
+            <fieldset name="basicset" label="COM_ELGERGASIA_CANDIDATE_SPECIALITIES" >
+                <field name="id" type="hidden" />
+                <field name="idUser" type="hidden" />
+                <field name="language" type="hidden" />
+                 <field
+                    name="spokenLanguage"
+                    type="text"
+                    description="COM_ELGERGASIA_SPOKEN_LANGUAGE_DESC"
+                    filter="string"
+                    label="COM_ELGERGASIA_SPOKEN_LANGUAGE"
+                    size="30"
+                    class="form-control"
+                />
+                <field
+                    name="idRank"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_CANDIDATE_SPECIALITY_RANK_DESC"
+                    label="COM_ELGERGASIA_CANDIDATE_SPECIALITY_RANK"
+                    query = "select id as value, rankFem as idRank from #__elg_rank r inner join #__elg_rank_translation rd on r.id = rd.idRank and {language}    order by ordering "
+                    class="form-control"
+                >
+                </field>
+                
+            </fieldset>
+	</fields>
+</form>

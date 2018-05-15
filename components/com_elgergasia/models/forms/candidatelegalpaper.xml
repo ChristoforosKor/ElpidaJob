@@ -1,0 +1,32 @@
+<form>
+	<fields>
+            <fieldset>
+                <field name="id" type="hidden" />
+                <field name="idUser" type="hidden" />
+                <field name="language" type="hidden" />
+                <field
+                    name="legalTitle"
+                    type="text"
+                    label="COM_ELGERGASIA_TITLE"
+                    required="true"
+                    class="form-control"
+                />
+                
+                 <field
+                    name="legalFile"
+                    type="file"
+                    label="COM_ELGERGASIA_FILE"
+                    required="true"
+                    class="form-control"
+                />
+                <field
+                    name="legalDateExpire"
+                    type="calendar"
+                    label="COM_ELGERGASIA_DATE_EXPIRE"    
+                    class="calendar-form-control"                
+                />
+                
+                
+            </fieldset>
+	</fields>
+</form>

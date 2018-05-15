@@ -1,0 +1,56 @@
+<form addrulepath="/components/com_elgergasia/models/rules" >
+	<fields>
+             
+		<fieldset name="employerset" label="COM_ELGERGASIA_VIEW_EMPLOYEER" >
+			<field name="idSearch" type="text" 
+				description="COM_ELGERGASIA_ID_DESC"
+				label="COM_ELGERGASIA_ID"
+				tabindex="1"
+                                class="form-control"
+				size="30"/>
+			<field
+				name="taxNumber"
+				type="text"
+				description="COM_ELGERGASIA_TAX_NUMBER_DESC"
+				tabindex="10"
+				label="COM_ELGERGASIA_TAX_NUMBER"
+                                class="form-control"
+				size="30" />
+			<field
+				name="nameSearch"
+				type="text"
+				description="COM_ELGERGASIA_VIEW_EMPLOYER_NAME_DESC"
+				tabindex="10"
+				label="COM_ELGERGASIA_VIEW_EMPLOYER_NAME"
+                                class="form-control"
+				size="30" />
+                        <field
+				name="idIndustry"
+				type="sqlLang"
+				description="COM_ELGERGASIA_VIEW_EMPLOYER_INDUSTRY_DESC"
+				label="COM_ELGERGASIA_VIEW_EMPLOYER_INDUSTRY"
+				query ="select id as value, industry as idIndustry from #__elg_ergasia_industry i inner join #__elg_ergasia_industry_translation it on i.id = it.idIndustry and {language} order by ordering, industry"
+				class="form-control"
+                                tabindex="1"
+			/>
+			<field
+				name="idCountry"
+				type="sqlLang"
+				description="COM_ELGERGASIA_VIEW_EMPLOYER_COUNTRY_DESC"
+				label="COM_ELGERGASIA_VIEW_EMPLOYER_COUNTRY_LABEL"
+				tabindex="5"
+				class="form-control"
+                                query ="select id as value, country as idCountry from #__elg_country inner join #__elg_country_translation on id=idCountry and {language}  order by ordering, country"
+			/>
+			<field
+				name="city"
+				type="text"
+				description="COM_ELGERGASIA_VIEW_EMPLOYER_CITY_DESC"
+				tabindex="6"
+				label="COM_ELGERGASIA_VIEW_EMPLOYER_CITY_LABEL"
+				size="30"
+                                class="form-control"
+			/>   
+		</fieldset>
+	</fields>
+</form>

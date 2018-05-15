@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="suggestions">
+        <message>
+            <![CDATA[sugestions]]>
+        </message>
+    </layout>
+    <fields name="request">
+            <fieldset name="request">
+                <field name="controller" type="text"  size="40"
+                    label="COM_ELG_CONTROLLER"
+                    description="COM_ELG_CONTROLLER_DESC" default="suggestions" />
+                
+            </fieldset>
+    </fields>
+</metadata>

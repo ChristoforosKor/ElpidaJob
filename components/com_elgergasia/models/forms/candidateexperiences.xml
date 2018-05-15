@@ -1,0 +1,83 @@
+<form>
+	<fields>
+            <fieldset name="basicset" label="COM_ELGERGASIA_VIEW_EMPLOYEE_CONTACT_DATA" >
+                <field name="id" type="hidden" />
+                <field name="idUser" type="hidden" />
+                <field name="language" type="HiddenLang" />
+                <field
+                    name="idIndustry"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_INDUSTRY_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_INDUSTRY"
+                    query ="select i.id as value, industry as idIndustry from #__elg_ergasia_industry_translation it inner join #__elg_ergasia_industry  i on i.id = it.idIndustry and {language} order by ordering, industry"
+                    
+                >
+                   
+                </field>
+                <field
+                    name="idSpecialization"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_SECTOR_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_SECTOR"
+                    query ="select idSpeciality as value, speciality as idSpecialization from #__elg_ergasia_speciality_translation where {language} order by speciality"
+                />
+                <field
+                    name="employerTitle"
+                    type="text"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_EMPLOYER_DESC"
+                    class="elg-input-wide"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_EMPLOYER"
+                   
+		/>
+                <field
+                    name="monthFrom"
+                    type="integer"
+                    first="1"
+                    last="12"
+                    step="1"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_MONTH_FROM_DESC"
+                 
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_MONTH_FROM_LABEL"
+                    
+		/>
+                <field
+                    name="yearFrom"
+                    type="integer"
+                    first="1970"
+                    last="2020"
+                    step="1"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_YEAR_FROM_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_YEAR_FROM_LABEL"
+                   
+		/>
+                <field
+                    name="monthTo"
+                    type="integer"
+                    first="1"
+                    last="12"
+                    step="1"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_MONTH_TO_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_MONTH_TO_LABEL"
+                    
+		/>
+                <field
+                    name="yearTo"
+                    type="integer"
+                    first="1970"
+                    last="2020"
+                    step="1"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_YEAR_TO_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_YEAR_TO_LABEL"
+                   
+		/>
+                <field
+                    name="jobDescription"
+                    class="elg-input-wide"
+                    type="textarea"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_JOB_DESCRIPTION_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_JOB_DESCRIPTION_LABEL"
+                    rows="10"
+		/>
+            </fieldset>
+	</fields>
+</form>

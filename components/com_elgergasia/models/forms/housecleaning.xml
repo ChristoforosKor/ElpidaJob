@@ -1,0 +1,80 @@
+<form addrulepath="/components/com_elgergasia/models/rules" >
+	<fields>
+            <fieldset name="housecleaning">
+                <field name="id" type="hidden" />
+                <field name="isActive" type="list" required="true" label="COM_ELGERGASIA_STATE" class="form-control">
+                    <option value="1" >Ενεργό</option>
+                    <option value="0">Ανενεργό</option>
+                    <option value="2">Σε επιθεώρηση</option>
+                </field>
+                <field name="fullname" type="text" required="true" label="Ονοματεπώνυμο" class="form-control"/>
+                <field name="address" type="text" required="true" label="Περιοχή - Διεύθυνση" class="form-control"/>
+                <field name="telephone" type="text" required="true" label="Tηλέφωνο" class="form-control"/>
+                <field name="email" type="text" lable="Ηλ. Ταχυδρομείο" class="form-control"/>
+                <field name="area_description"
+                       type="textarea" 
+                       required="true" 
+                       label="Περιγραφή εργασίας"   
+                       rows="8"
+                       cols="40"
+                    class="form-control"/> 
+                <field name="idExtraInfo"
+                    type="checkboxes" 
+                    label="Επιπλέον καθαρισμός"   
+                    class="form-control" >
+                    <option value="1" >Ψυγείο</option>
+                    <option value="2" >Φούρνος</option>
+                    <option value="3" >Χαλιά</option>
+                    <option value="4" >Τζάμια</option>
+                    <option value="5" >Τζάκι</option>
+                    <option value="6" >Γκαράζ</option>
+                    <option value="7" >Κήπος</option>
+                </field> 
+                
+                 <field name="idCleaningFrequency"
+                       type="radio" 
+                       required="true" 
+                       label="Πόσο συχνά να γίνεται ο καθαρισμός;"    
+                       class="form-control" default="1" >
+                        <option value="1">Μια φορά</option>
+                        <option value="2">Μια φορά την εβδομάδα</option>
+                        <option value="3" >Μερικές φορές την εβδομάδα</option>
+                        <option value="4" >Μια φορά τον μήνα</option>
+                        <option value="5" >Μερικές φορές τον μήνα</option>
+                        <option value="6" >Μία ή περισσότερες φορές ετησίως</option>
+                 </field>
+               
+                 <field name="idCleaningStart"
+                       type="radio" 
+                       required="true" 
+                       label="Πότε θέλετε να γίνει;"   
+                       default="3"
+                        class="form-control">
+                        <option value="1">Άμεσα</option>
+                        <option value="2">Εντός της εβδομάδας</option>
+                        <option value="3" >Εντός του μήνα</option>
+                        <option value="4" >Αργότερα</option>
+                        
+                 </field>
+                <field name="idΒuying"
+                       type="radio" 
+                       required="true" 
+                       label="Ποιος θα αγοράσει τα καθαριστικά;"   
+                        class="form-control" default="3" >
+                     <option value="1">Από εμένα</option>
+                     <option value="2">Από την καθαρίστρια</option>
+                     <option value="3" >Κατόπιν επικοινωνίας</option>
+                 </field>
+                
+                <field name="idCommunicationTime"
+                       type="radio" 
+                       required="true" 
+                       label="Ώρες επικοινωνίας"   
+                        class="form-control" default="1" >
+                     <option value="1">Απόγευμα</option>
+                     <option value="2">Πρωί</option>
+                     <option value="3" >Και τα δύο</option>
+                 </field>                
+            </fieldset>
+	</fields>
+</form>

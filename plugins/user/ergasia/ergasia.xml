@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="user">
+	<name>plg_user_ergasia</name>
+	<author>e-logism</author>
+	<creationDate>April  2013</creationDate>
+	<copyright>(C) 2013 e-logism.</copyright>
+	<license>e-logism software licence</license>
+	<authorEmail>christoforos@e-logism.gr</authorEmail>
+	<authorUrl>www.e-logism.gr</authorUrl>
+	<version>1.0.0</version>
+	<description>PLG_USER_ERGASIA_XML_DESCRIPTION</description>
+
+	<files>
+		<filename plugin="ergasia">ergasia.php</filename>
+		<filename>index.html</filename>
+		<folder>ergasia</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_user_ergasia.ini</language>
+		<language tag="en-GB">en-GB.plg_user_ergasia.sys.ini</language>
+		<language tag="el-GR">el-GR.plg_user_ergasia.ini</language>
+		<language tag="el-GR">el-GR.plg_user_ergasia.sys.ini</language>
+	</languages>
+        <config>
+            <fields name="params">
+                <fieldset name="basic">
+                    <field  name="group_candidate" type="usergroup" 
+                            label="PLG_ELGERGASIA_FIELD_GROUP_CANDIDATE"
+                            description="PLG_ELGERGASIA_FIELD_GROUP_CANDIDATE_DESC" 
+                            default="0"
+                    />
+                    <field name="group_employer" type="usergroup" 
+                        label="PLG_ELGERGASIA_FIELD_GROUP_EMPLOYER"
+                        description="PLG_ELGERGASIA_FIELD_GROUP_EMPLOYER_DESC" 
+                        default="0"
+                    />
+
+                    <field  name="menu_register_candidate" 
+                            type="menuitem" 
+                            label="PLG_ELGERGASIA_FIELD_MENU_REGISTER_CANDIDATE"
+                            description="PLG_ELGERGASIA_FIELD_MENU_REGISTER_CANDIDATE_DESC" 
+                            default="0"
+                    />
+                    <field name="menu_register_employer" 
+                           type="menuitem" 
+                            label="PLG_ELGERGASIA_FIELD_MENU_REGISTER_EMPLOYER"
+                            description="PLG_ELGERGASIA_FIELD_MENU_REGISTER_EMPLOYER_DESC" 
+                            default="0"
+                    />
+                </fieldset>
+            </fields>
+        </config>
+</extension>

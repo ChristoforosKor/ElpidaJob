@@ -1,0 +1,117 @@
+<form>
+	<fields>
+            
+            <fieldset name="personalset"  label="COM_ELGERGASIA_VIEW_EMPLOYEE_CHARACTERISTICS_DATA" >
+                <field name="id" type="hidden" />
+                <field name="idUser" type="hidden" />
+                <field name="language" type="hidden" />
+                 <field name="idGender" 
+                        default="0" 
+                        label="COM_ELGERGASIA_VIEW_EMPLOYEE_GENDER" 
+                        description="COM_ELGERGASIA_VIEW_EMPLOYEE_GENDER_DESC"
+                        type="sqlLang" 
+                        required="true"
+                        query="select idGender as value, gender as idGender from #__elg_ergasia_gender_translation where {language} order by gender"
+                        class="form-control"
+                />
+                <field
+                    required="true"
+                    name="dateOfBirth"
+                    type="calendar"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_FIELD_DOB"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_DOB_DESC"
+                    class="form-control"
+                />
+              
+               <field
+                    name="idNationality"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_CANDIDATE_NATIONALITY_DESC"
+                    filter="string"
+                    label="COM_ELGERGASIA_VIEW_CANDIDATE_NATIONALITY_LABEL"
+                    required="true"
+                    query = "select idCountry as value, country as idNationality  from #__elg_country_translation inner join #__elg_country on id = idCountry and {language} order by ordering, country "
+                    class="form-control"
+                />    
+                <field
+                    name="idMilitaryStatus"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_MILITARYSTATUS_DESC"
+                    filter="string"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_MILITARYSTATUS_LABEL"
+                    required="true"
+                    query = "select idMilitaryStatus as value, militaryStatus as idMilitaryStatus from #__elg_militarystatus_translation inner join #__elg_militarystatus on id = idMilitaryStatus and {language} order by ordering,  militaryStatus "
+                    class="form-control"
+                /> 
+                <field
+                    name="idMaritalStatus"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_MARITALSTATUS_DESC"
+                    filter="string"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_MARITALSTATUS_LABEL"
+                    required="true"
+                    query = "select idMaritalStatus as value, maritalStatus as idMaritalStatus from #__elg_maritalstatus_translation inner join #__elg_maritalstatus on id = idMaritalStatus and {language} order by ordering "
+                    class="form-control"
+                />
+                
+                <field
+                    name="idDriverLicence"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_CANDIDATE_DRIVER_LICENCE_DESC"
+                    filter="string"
+                    label="COM_ELGERGASIA_VIEW_CANDIDATE_DRIVER_LICENCE_LABEL"
+                    required="true"                                                                     
+                    query = "select d.idDriverLicence as value, driverLicence as idDriverLicence from #__elg_ergasia_driverlicence d inner join #__elg_ergasia_driverlicence_translation dt on d.idDriverLicence = dt.idDriverLicence and {language} order by ordering "
+                    class="form-control"
+                />    
+                
+               <field
+                    name="childrenNum"
+                    type="text"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_CHILDRENNUM_LABEL"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_CHILDRENNUM_DESC"
+                    default="0"
+                    class="form-control"
+                />
+                <field
+                    name="idReligion"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_RELIGION_DESC"
+                    filter="string"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_RELIGION_LABEL"
+                     query = "select idReligion as value, religion as idReligion from #__elg_religion_translation where {language}  order by religion "
+                     class="form-control"
+                />
+                <field name="smoking" type="list" default="0" 
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_SMOKING_LABEL" 
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_SMOKING_DESC"
+                    class="form-control">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                    name="idPetFriend"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_PET_DESC"
+                    filter="string"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_PET_LABEL"
+                    query = "select idRank as value, rankFem as idPetFriend from #__elg_rank_translation rt inner join #__elg_rank r on r.id = rt.idRank and {language} order by ordering "
+                    class="form-control"
+                >
+                
+                </field>
+                
+                <field
+                    name="aboutMe"
+                    type="textarea"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_ABOUT_ME_LABEL_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_ABOUT_ME_LABEL"
+                    cols="60"
+                    rows="10"
+                    filter="safehtml"
+                   
+                    class="form-control"
+                   />
+            </fieldset>
+	</fields>
+</form>

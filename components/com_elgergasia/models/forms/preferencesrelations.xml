@@ -1,0 +1,17 @@
+<form> 
+	<fields addfieldpath="/components/administrator/com_elgergasia/models/fields/" >
+            <fieldset name="basicset" label="COM_ELGERGASIA_VIEW_EMPLOYEE_CONTACT_DATA" >
+                <field name="idUser" type="hidden" />
+                <field
+                    name="idRelations"
+                    type="SQLCheckboxes"
+                    description="COM_ELGERGASIA_HOURS"
+                    label="COM_ELGERGASIA_HOURS_DESC"
+                    value_field="relationType"
+                    key_field="idRelationType"
+                    query ="select idRelationType , relationType  from #__elg_ergasia_relationtype_translation where {language} order by  relationType"
+                    class="multiple-check-horizontal" >
+                </field>
+           </fieldset>
+	</fields>
+</form>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form addrulepath="/components/com_elgalocrm/models/rules" >
+    <fieldset>
+            
+            <field name="id1" type="hidden" />
+            <field name="id2" type="hidden" />
+            <field name="id3" type="hidden" />
+            <field name="idUser" type="hidden" />
+            <field name="photo1" type="hidden" />
+            <field name="photo2" type="hidden" />
+            <field name="photo3" type="hidden" />
+            
+            
+            <field name="candidatePhotoUpload1" 
+                   type="file" 
+                   label="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD" 
+                   description="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD_DESC" 
+                   size="10" accept="image/*" />
+            <field name="candidatePhotoUpload2" 
+                   type="file" 
+                   label="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD" 
+                   description="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD_DESC" 
+                   size="10" accept="image/*" />
+            <field name="candidatePhotoUpload3" 
+                   type="file" 
+                   label="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD" 
+                   description="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD_DESC" 
+                   size="10" accept="image/*" />
+           
+     </fieldset>
+</form>

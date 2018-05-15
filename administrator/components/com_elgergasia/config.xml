@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fields name="params" >
+        <fieldset name="basic" label="COM_ELGERGASIA_CONFIGURATION_BASIC" >
+            
+            <field 
+                name="industryRoot"
+                type="text"
+                default="8"
+                label="COM_ELGERGASIA_INDUSTRY_FATHER_LABEL"
+                description="COM_ELGERGASIA_INDUSTRY_FATHER_DESC"
+            />
+            <field 
+                name="candidateRestrGroup"
+                type="usergroup"
+                label="COM_ELGERGASIA_CANDIDATE_RESTR_GROUP"
+                description="COM_ELGERGASIA_CANDIDATE_RESTR_GROUP_DESC"
+                default="14" />
+             <field 
+                name="employersRestrGroup"
+                type="usergroup"
+                label="COM_ELGERGASIA_EMPLOYERS_RESTR_GROUP"
+                description="COM_ELGERGASIA_EMPLOYERS_RESTR_GROUP_DESC"
+                default="13" />
+            <field name="candidatesMenu"
+                type="menuitem"
+                default="0"
+                label="COM_ELGERGASIA_CANDIDATE_MENU"
+                description="COM_ELGERGASIA_CANDIDATE_MENU_DESC"
+                />
+            <field name="employersMenu"
+                type="menuitem"
+                default="0"
+                label="COM_ELGERGASIA_PARAM_EMPLOYERS_MENU"
+                description="COM_ELGERGASIA_PARAM_EMPLOYERS_MENU_DESC"
+                /> 
+             <field name="officeTeam"
+                type="usergroup"
+                default="0"
+                label="COM_ELGERGASIA_PARAM_OFFICE_TEAM"
+                description="COM_ELGERGASIA_PARAM_OFFICE_TEAM_DESC"
+                /> 
+                <!-- field 
+                name="employeesRoot" 
+                type="menuitem" 
+                default="193" 
+                label="COM_ELGERGASIA_CANDIDATE_MENU_LABEL_" 
+                description="COM_ELGERGASIA_CANDIDATE_MENU_DESC" 
+            />
+            <field 
+                name="listLimit" 
+                type="text" 
+                default="50" 
+                label="COM_ELGERGASIA_LIST_LIMIT" 
+                description="COM_ELGERGASIA_LIST_DESC" 
+            />
+            <field
+                name="candidateLevel"
+                type="accesslevel"
+                label="COM_ELGERGASIA_PARAMETERS_LEVEL_VIEW_CANDIDATES" 
+                description="COM_ELGERGASIA_PARAMETERS_LEVEL_VIEW_CANDIDATES_DESC"
+                default="6"
+                />
+            <field
+                name="employersLevel"
+                type="accesslevel"
+                label="COM_ELGERGASIA_PARAMETERS_LEVEL_VIEW_EMPLOYERS" 
+                description="COM_ELGERGASIA_PARAMETERS_LEVEL_VIEW_EMPLOYERS_DESC"
+                default="7"
+                />
+            <field
+                name="jobAgent"
+                type="accesslevel"
+                label="COM_ELGERGASIA_PARAMETERS_LEVEL_VIEW_JOBAGENT" 
+                description="COM_ELGERGASIA_PARAMETERS_LEVEL_VIEW_JOBAGENT"
+                default="8"
+                / -->
+             <field
+                name="defaultLang"
+                type="language"
+                label="COM_ELGERGASIA_PARAMETERS_DEFAULT_LANGUAGE" 
+                description="COM_ELGERGASIA_PARAMETERS_DEFAULT_LANGUAGE_DESC"
+                default="el"
+                />
+               <field name="candidatesPhotosFolder" 
+                      type="folderlist" 
+                      default="/media/com_elgergasia/candidatephotos" 
+                      label="COM_ELGERGASIA_PARAMETERS_CANDIDATES_PHOTOS_FOLDER" 
+                      description="COM_ELGERGASIA_PARAMETERS_CANDIDATES_PHOTOS_FOLDER_DESC"
+                      directory="media/com_elgergasia" filter="" exclude="" stripext="" />
+        </fieldset>
+        <fieldset
+                name="permissions"
+                label="JCONFIG_PERMISSIONS_LABEL"
+                description="JCONFIG_PERMISSIONS_DESC"
+        >
+                <field
+                        name="rules"
+                        type="rules"
+                        label="JCONFIG_PERMISSIONS_LABEL"
+                        class="inputbox"
+                        validate="rules"
+                        filter="rules"
+                        component="com_elgergasia"
+                        section="component"
+                />
+        </fieldset>
+    </fields>
+</config>

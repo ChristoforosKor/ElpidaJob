@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension method="upgrade" type="component" version="3.1">
+    <name>com_elgergasia</name>
+    <creationDate>2013-04-29</creationDate>
+    <author>e-logism</author>
+    <authorEmail>info@e-logism.gr</authorEmail>
+    <authorUrl>www.e-logism.gr</authorUrl>
+    <copyright>Copyright (c) e-logism</copyright>
+    <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+    <version>0.0.1</version>
+    <description>COM_ELGERGASIA_DESCRIPTION</description>
+	<install>
+            <sql>
+                <file charset="utf8" driver="mysql">sql/install.mysql.utf8.sql</file>
+            </sql>
+        </install>
+	<uninstall>
+            <sql>
+                <file charset="utf8" driver="mysql">sql/uninstall.mysql.utf8.sql</file>
+            </sql>
+        </uninstall>
+	<update>
+            <schemas>
+<schemapath type="mysql"/>
+</schemas>
+        </update>
+        <scriptfile>script.php</scriptfile>
+	<files folder="site">
+            <filename>index.html</filename>
+            <filename>elgergasia.php</filename>
+            <filename>controller.php</filename>
+            <filename>Utils.php</filename>
+            <folder>models</folder>
+            <folder>views</folder>
+            <folder>language</folder>
+            <!-- folder>media</folder -->
+	</files>
+        <media destination="com_elgergasia">
+            <folder>media/css</folder>
+            <folder>media/images</folder>
+            <file>media/index.html</file>
+        </media>
+	<administration>
+         
+            <!--  menu img="components/com_elgergasia/images/menuiconx16.png" link="option=com_elgergasia&amp;view=params&amp;task=edit">com_elgergasia_title</menu>
+                <submenu>
+                    <menu img="components/com_elgergasia/images/menuiconx16.png" link="option=com_elgergasia&amp;view=styles&amp;controller=styles&amp;ext=com_elgergasia">COM_ELGERGASIA_CSS</menu>
+                    <menu img="components/com_elgergasia/images/menuiconx16.png" link="option=com_elgergasia&amp;view=langs&amp;controller=langs">COM_ELGERGASIA_LANGUAGE</menu>
+                    <menu img="components/com_elgergasia/images/menuiconx16.png" link="option=com_elgergasia&amp;view=about">COM_ELGERGASIA_ABOUT</menu>
+		</submenu -->
+		<files folder="admin">
+                    <filename>index.html</filename>
+                    <filename>elgergasia.php</filename>
+                    <filename>controller.php</filename>
+                    <filename>config.xml</filename>
+                    <filename>access.xml</filename>
+                    <filename>elgergasia.css</filename>
+                    <filename>script.php</filename>
+                    <filename>changelog.txt</filename>
+                    <folder>sql</folder>
+                    <folder>tables</folder>
+                    <folder>models</folder>
+                    <folder>views</folder>
+                    <folder>controllers</folder>
+                    <folder>libraries</folder>
+                    <folder>images</folder>
+                    <folder>language</folder>
+                    <folder>helpers</folder>
+		</files>
+    </administration>
+</extension>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields >
+            <fieldset name="ergasia">
+                <field type="hidden" name="formlocation" value="front.candidate" />
+            </fieldset>
+	</fields>
+</form>

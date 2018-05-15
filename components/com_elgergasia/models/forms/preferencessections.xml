@@ -1,0 +1,17 @@
+<form> 
+	<fields addfieldpath="/components/administrator/com_elgergasia/models/fields/" >
+            <fieldset>
+                <field name="idUser" type="hidden" />
+                <field
+                    class="multiple-check-horizontal"
+                    name="idSections"
+                    type="SQLCheckboxes"
+                    label="COM_ELGERGASIA_GEO_SECTION"
+                    query ="select ct.idCounty, ct.county  from #__elg_county c inner join  #__elg_county_translation ct on c.id = ct.idCounty where {language} order by ordering, county"
+                    value_field="county"
+                    key_field="idCounty"
+                     >
+                </field>
+           </fieldset>
+	</fields>
+</form>
