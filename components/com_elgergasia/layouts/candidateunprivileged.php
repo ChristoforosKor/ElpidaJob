@@ -10,14 +10,16 @@
 ----------------------------------**/
  defined('_JEXEC') or die('Restricted access');
  JHTML::_( 'behavior.modal', 'a.modalpop' );
- 
+
 ?>
 
 
 
 <div class="elg" >
-    <?php require JPATH_COMPONENT_SITE . '/commons/html/candidatehead.php'; ?>
- 
+    <p>
+        <?php echo JText::_('COM_EGLERGASIA_VIEW_GDPR_STATE'); ?>
+    </p>
+ <h2><?php echo JText::_('COM_ELGERGASIA_PERSONNEL'). ': ' . $this -> candidate -> id;  ?>   </h2>
    <div class="candidate" >
     <h3><?php echo JText::_('COM_ELGERGASIA_PREFERENCES') ?></h3>
 		<div class="preferences" >
@@ -101,7 +103,7 @@
 	<div class="clearfix">&nbsp;</div>
 	<div>
 	
-   
+   <?php /**
   <h3><?php echo JText::_('COM_ELGERGASIA_VIEW_CANDIDATE_PHOTOS'); ?></h3>
     <table class="candidatephotos table table-bordered">
         <?php if(utils::canUserEditData('', $this->state->get('id')))  : ?>
@@ -141,6 +143,8 @@
            </tr>
        </tbody>
     </table>
+   
+    */ ?>
     </div>  
 	<?php endif; ?>
  <div class="clearfix">&nbsp;</div>
@@ -150,7 +154,8 @@
  
  <br />
 	<div class="fb-like" data-href="<?php echo JURI::current(); ?>" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
- <br />
+ <?php /**
+        <br />
  <h3><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_BASIC_DATA'); ?></h3>
  <table class="table table-bordered">
    
@@ -175,7 +180,7 @@
        
     </tbody> 
 </table>
-
+**/ ?>
 
 <h3><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_CHARACTERISTICS_DATA'); ?></h3>
 <table class="table table-bordered">
@@ -183,11 +188,13 @@
     
   
     <tbody>
-   
+   <?php /**
     <tr>    
         <th><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_GENDER'); ?></th><td><?php echo $this->characteristicData->gender ?></td>
         <th><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_FIELD_DOB'); ?></th><td><?php echo($this->characteristicData->dateOfBirth) ?></td>
     </tr>
+    * **
+    */ ?>
     <tr>    
         <th colspan="4" style="text-align: left" ><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_ABOUT_ME_LABEL'); ?></th>
     </tr>
@@ -212,8 +219,11 @@
     <thead>
         <tr>
             <th><?php echo JText::_('COM_ELGERGASIA_DURATION') ?></th>
+            <?php /**
             <th><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_EMPLOYER') ?></th>
             <th><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_INDUSTRY') ?></th>
+             * 
+             */ ?>
             <th><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_EXPERIENCE_SECTOR') ?></th>
            
     </thead>
@@ -224,9 +234,12 @@
       ?>
         <tr>
             <td><?php echo $item->dateFrom . ' - ' .  $item->dateTo ?></td>
+            <?php /**
             <td><?php echo $item->employerTitle?></td>
             <td><?php echo $item->industry?></td>
-            <td><?php echo $item->speciality?></td>
+            **/ ?>
+             <td><?php echo $item->speciality?></td>
+             
           
             
         </tr>

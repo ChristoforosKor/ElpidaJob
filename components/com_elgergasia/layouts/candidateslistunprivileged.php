@@ -5,6 +5,7 @@
  * @copyright (C)  2013, e-logism.gr
  * @license - GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
+use Joomla\CMS\Language\Text;
     defined('_JEXEC') or die('Restricted access');
 	$Itemid=$this->state->get('Itemid');
 	$lang = $this->state->get('lang');
@@ -22,13 +23,14 @@
 	$theCandidate = JText::_('COM_ELGERGASIA_SUGGESTIONS_CANDIDATE');
 	$speciality = JText::_('COM_ELGERGASIA_JOB_SPECIALITY');
 	$areas = JText::_('COM_ELGERGASIA_PLACE');
-	
+	$code =JText::_('COM_ELGERGASIA_ID');
 	//$or = JText::_('COM_ELGERGASIA_OR');
+            echo '<p>', Text::_('COM_EGLERGASIA_VIEW_GDPR_STATE'), '</p>';
 	foreach($this->data as $item): ?>
 	
 	<hr />
 	<div class="candidate-list-item row">
-	<h3><?php  echo $item->fullname, ' (' , $item->id , ')'; ?></h3>
+	<h3><?php  echo $code . ' ' .  $item->id  ?></h3>
 		<div class="pull-left candidate-1">
 			<h4><?php echo $workAs; ?></h4>
 			<div class="pull-left">
@@ -45,10 +47,7 @@
 			
 		</div>
 		<div class="pull-right candidate-2">
-			<h4><?php echo $theCandidate . ' ' . $item->id; ?></h4>
-                        <p><?php echo $isFrom, ': ', '<strong>', $item->nationality, '</strong>'; ?><br /><?php echo ($item -> dateOfBirth == '0000-00-00' ? '' : JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_FIELD_DOB') . ': ' .ComponentUtils::getDateFormated($item -> dateOfBirth, 'Y-m-d', 'd/m/Y') ); ?></p>
-			<p><img class="img-rounded" src="media/com_elgergasia/candidatephotos/<?php echo $item->photo; ?>" alt="<?php $image ?>" /></p>
-			<p class="hidden-print"> <a class="btn btn-primary" href="<?php echo JRoute::_('index.php?option=com_elgergasia&Itemid=' . $Itemid . '&view=candidate&layout=candidate&id=' . $item->id . '&lang=' . $lang); ?>" class="btn"><?php echo $show_details; ?></a></p>		
+                                    <p class="hidden-print"> <a class="btn btn-primary" href="<?php echo JRoute::_('index.php?option=com_elgergasia&Itemid=' . $Itemid . '&view=candidate&layout=candidate&id=' . $item->id . '&lang=' . $lang); ?>" class="btn"><?php echo $show_details; ?></a></p>		
                 </div>
 		</div>		
 	<?php endforeach; 

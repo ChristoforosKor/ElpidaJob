@@ -7,6 +7,7 @@
 # @license - GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 # Websites: http://www.e-logism.gr
 ----------------------------------**/
+
     defined('_JEXEC') or die('Restricted access');
     if ( in_array( 12, JFactory::getUser() -> getAuthorisedGroups() ) ):
         $fullname = $this->candidate->name;
