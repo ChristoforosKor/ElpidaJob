@@ -33,6 +33,8 @@ class ElgergasiaControllerCandidateBasicSave extends ElgergasiaController {
         $state->set('mobile', $input->getCmd('mobile',''));
         $state->set('fax', $input->getCmd('fax',''));
         $state->set('language', $input->post->getCmd('language', ''));
+        $state->set('showPhoto', $input->getInt('showPhoto', 0));
+         $state->set('useMyData', $input->getInt('useMyData', 0));
         $res = $model->setState($state);
         $redUrl =JRoute::_('index.php?model=candidate&view=candidate&Itemid=' . $input->getInt('Itemid'). '&id=' . $state->get('idUser', 0), false);
         if($res) {

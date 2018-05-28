@@ -99,7 +99,7 @@
         $query->select(" u.id, left(u.name, locate(' ', u.name) + 1) as fullname,  cn.country as nationality,  u.email, eb.phone, ec.dateOfBirth,
 eb.mobile, eb.fax, lu.datemodified,
 case when cp.photo is null then 'no-image.jpg'  else concat(cp.photo, '_medium.', cp.photoExtension) end as photo,
-group_concat(distinct spet.speciality) as speciality ,  eb.showPhoto , eb.showPhoto, eb.useMyData/**, group_concat(distinct cnt.county ) as prefSection**/")
+group_concat(distinct spet.speciality) as speciality ,  eb.showPhoto , eb.useMyData/**, group_concat(distinct cnt.county ) as prefSection**/")
         ->  from ("#__users u ")
         ->  innerJoin ('#__user_usergroup_map um on u.id = um.user_id and um.group_id = 14'  )
         ->  leftJoin ('#__elg_ergasia_candidate_basic eb on u.id = eb.idUser')
@@ -123,7 +123,7 @@ group_concat(distinct spet.speciality) as speciality ,  eb.showPhoto , eb.showPh
     -> order('eb.id desc'); //$filters->filter_order . ' ' . $filters->filter_order_Dir);
 		
 
-        if(count($filters) > 0 ) {
+     //   if(count($filters) > 0 ) {
             $whereCl = '';
             $andV = '';
             if($filters->idUser > 0 ) {
@@ -310,11 +310,16 @@ group_concat(distinct spet.speciality) as speciality ,  eb.showPhoto , eb.showPh
                  $andV = " and ";
                  
             }
-			
+            
+            if ( ! Utils::canUserEditData('', 0)):
+                $whereCl .= $andV . " eb.useMyData = 1 ";
+                $andV = " and ";
+            endif;
+            
             if($whereCl != '') {
                 $query->where($whereCl);
             }
-        }
+       // }
         $query->setLimit($filters->limit, $filters->limitstart);
         //echo $query->dump();
         $db->setQuery($query);

@@ -37,6 +37,7 @@ use Joomla\CMS\Language\Text;
 				<h5><?php echo $speciality; ?></h5>
 				<ul><li><?php echo str_replace(',', '</li><li>', $item->speciality); ?></li></ul>
 			</div>
+                        
                         <?php /**
 			<div class="pull-left" >
 				<h5><?php echo $areas; ?></h5>
@@ -47,6 +48,12 @@ use Joomla\CMS\Language\Text;
 			
 		</div>
 		<div class="pull-right candidate-2">
+                                    <?php if ( $item -> showPhoto == 1 ): ?>
+                                      <p>
+                                        <img class="img-rounded" src="/media/com_elgergasia/candidatephotos/<?php echo $item->photo; ?>" alt="<?php $image ?>" /><br / -->
+                                       
+                                    </p>
+                                    <?php endif; ?>
                                     <p class="hidden-print"> <a class="btn btn-primary" href="<?php echo JRoute::_('index.php?option=com_elgergasia&Itemid=' . $Itemid . '&view=candidate&layout=candidate&id=' . $item->id . '&lang=' . $lang); ?>" class="btn"><?php echo $show_details; ?></a></p>		
                 </div>
 		</div>		

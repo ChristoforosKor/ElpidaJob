@@ -10,7 +10,7 @@
 ----------------------------------**/
     defined('_JEXEC') or die('Restricted access');
  JHTML::_( 'behavior.modal', 'a.modalpop' );
- 
+ use Joomla\CMS\Factory;
 ?>
 
 
@@ -268,7 +268,13 @@
     </tr><tr>    
         <th><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_FAX_LABEL'); ?></th><td><?php echo $this->basicData->fax ?></td>
         <th></th><td></td>
-    </tr>   
+    </tr>
+    <?php if ( Utils::canUserEditData('', Factory::getUser() -> id ) ): ?>
+    <tr>
+        <th><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_SHOW_PHOTO'); ?></th><td><?php echo Utils::getYesNo( $this->basicData->showPhoto ); ?></td>
+        <th><?php echo JText::_('COM_ELGERGASIA_VIEW_EMPLOYEE_USE_MY_DATA'); ?></th><td><?php echo Utils::getYesNo( $this->basicData->useMyData ); ?></td>
+    </tr>
+    <?php endif; ?>
        <?php }
     else {
         echo '<tr><td colspan="4" >' . JText::_('COM_ELGERGASIA_NO_DATA_FOUND') . '<br />' .  JText::_('COM_ELGERGASIA_USE_EDIT_FOR_NEW') . '</td></tr>';

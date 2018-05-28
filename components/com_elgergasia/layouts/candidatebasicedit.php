@@ -53,6 +53,15 @@
                     </div>
                    
                 </div>
+                 <div class="clearfix">&nbsp;</div>
+                <div class="yjsg-row">
+                    
+                    <div class="yjsg-col-1-12">
+                        <?php echo $this->form->getInput('showPhoto') . $this->form->getLabel('showPhoto') ?> 
+                        <br />
+                        <?php echo $this->form->getInput('useMyData') . $this->form->getLabel('useMyData') ?>
+                    </div>
+                </div>
                 <div class="clearfix">&nbsp;</div>
                 <?php require_once 'parteditlangbar.php'; ?>
                 <?php include 'candidatebasicedit_translation.php' ?>

@@ -68,10 +68,10 @@ echo '</div>';
             <span class="label label-info"> <?php echo JText::_('COM_ELGERGASIA_HOURS');?></span><br /> <strong><?php echo $this->itemData->hour; ?></strong><br />
             <?php 
             endif;
-             if ($this->itemData->daysOff != ''): ?>
+            /** if ($this->itemData->daysOff != ''): ?>
                <span class="label label-info"> <?php  echo JText::_('COM_ELGERGASIA_DAYS_OFF');?></span><br /> <strong><?php echo $this->itemData->daysOff; ?></strong><br />
             <?php 
-            endif;
+            endif; **/
          ?>
         
 	</p>

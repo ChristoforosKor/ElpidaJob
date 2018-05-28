@@ -94,21 +94,15 @@ class Utils {
         }
                     
         $request =  CommonUtils::getBasicStateData($input);
-//        $request['idCustomer'] = $input->getInt('idCustomer',0);
-//        $request['idProject'] = $input->getInt('idProject',0);
-//        $request['idProjectState'] = $input->getInt('idProjectState',0);
-//        $request['lang'] =  $input->getWord('lang', self::COMPONENT_URL_LOCALE);
-//        $request['typeview'] = $input->getWord('typeview','');
-//        $request['idStep'] = $input->getInt('idStep',0);
-//        $request['reset'] = $input->getInt('reset',0);
-//        $request['idImplementation'] = $input->getInt('idImplementation',0);
         $input->set('basicData', $request);
         return $request;
     }
     
-    
-    
-    
-}    
-
-?>
+        public static function getYesNo($intVal) {
+        if ( $intVal == 1):
+            return JText::_('JYes');
+        else:
+            return JText::_('JNo');
+        endif;
+    }
+}

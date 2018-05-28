@@ -23,6 +23,8 @@ class TableCandidatesBasic extends JTable {
     var $phone = null;
     var $mobile = null;
     var $fax = null;
+    var $showPhoto = null;
+    var $useMyData = null;
     
     
     

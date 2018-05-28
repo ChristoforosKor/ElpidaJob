@@ -108,7 +108,7 @@
     
     private function getBasicTitles($id, $db, $query) {
         $query->clear();
-        $query->select(" c.id, idUser, cn.country, ifNull(cbt.city, cbtd.city) as city, ifNull(cbt.address, cbtd.address) as address, postalCode, phone, mobile, fax, st.candidateState ")
+        $query->select(" c.id, idUser, cn.country, ifNull(cbt.city, cbtd.city) as city, ifNull(cbt.address, cbtd.address) as address, postalCode, phone, mobile, fax, st.candidateState, c.showPhoto, c.useMyData ")
                 ->from("#__elg_ergasia_candidate_basic c ")
                 ->leftJoin("#__elg_ergasia_candidate_basic_translation cbt on c.id = cbt.idCandidateBasic and cbt.language = '" . $this->lang . "'")
                 ->leftJoin('#__elg_ergasia_candidate_basic_translation cbtd on c.id =  cbtd.idCandidateBasic and cbtd.isDefault = 1')
