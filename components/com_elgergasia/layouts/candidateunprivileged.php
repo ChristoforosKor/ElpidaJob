@@ -11,6 +11,14 @@
  defined('_JEXEC') or die('Restricted access');
  JHTML::_( 'behavior.modal', 'a.modalpop' );
 
+ $canEditData = utils::canUserEditData( '', $this->state->get('id') );
+ $hasBasicData = count(  get_object_vars( $this -> basicData ) ) > 0;
+    if ( $hasBasicData ):
+        $showPhoto = (bool)$this -> basicData -> showPhoto && count( $this -> photosData) > 0 ;
+    else:
+        $showPhoto = false;
+    endif;
+   
 ?>
 
 
@@ -99,38 +107,30 @@
 			<?php endif; ?>
 		</div>
 	</div>
-	  <?php if(count($this->photosData) > 0) :?>
+
 	<div class="clearfix">&nbsp;</div>
-	<div>
+          <?php if( $showPhoto ) :?>
+<div>
 	
-   <?php /**
+   	
   <h3><?php echo JText::_('COM_ELGERGASIA_VIEW_CANDIDATE_PHOTOS'); ?></h3>
     <table class="candidatephotos table table-bordered">
-        <?php if(utils::canUserEditData('', $this->state->get('id')))  : ?>
+       
         <tfoot class="no-print">
            <tr>
                <td colspan="4">
-                    <form method="post" action="<?php echo JRoute::_('index.php?option=' . $this->state->get('option') . '&Itemid=' . $this->state->get('Itemid') . '&lang=' . $this->state->get('lang') . '&view=candidatephotos&layout=photosedit&idUser=' . $this->state->get('id') . '&id=' . (isset($this->photosData[0])? $this->photosData[0]->id : 0 ) ); ?>" >
-                       <div class="form">
-                           <div class="elg-column" >
-                               <div class="formelm" >
-                                   <button class="btn btn-primary">
-                                       <?php echo JText::_('COM_ELGERGASIA_EDIT'); ?>
-                                   </button>
-
-                               </div>
-                           </div>
-                       </div>
-                   </form>
+                    
                </td>
            </tr>
        </tfoot>
-       <?php endif; ?>
+     
        <tbody> 
            <tr>
                 <td class="photo" >
         
-           <?php foreach($this->photosData as $photo) : ?>
+           <?php
+              
+                foreach($this->photosData as $photo) : ?>
 
                <?php echo '<a class="modalpop" href="'. JUri::base() . $this->photoUrlPart .  '/' . $photo->photo . '_large.' . $photo->photoExtension . '" ><img src="'. JUri::base() . $this->photoUrlPart .  '/' . $photo->photo . '_medium.' . $photo->photoExtension . '" /></a>' ?>
 
@@ -143,10 +143,25 @@
            </tr>
        </tbody>
     </table>
-   
-    */ ?>
+  <div >
+       <?php if( $canEditData )  : ?>
+        <form method="post" action="<?php echo JRoute::_('index.php?option=' . $this->state->get('option') . '&Itemid=' . $this->state->get('Itemid') . '&lang=' . $this->state->get('lang') . '&view=candidatephotos&layout=photosedit&idUser=' . $this->state->get('id') . '&id=' . (isset($this->photosData[0])? $this->photosData[0]->id : 0 ) ); ?>" >
+            <div class="form">
+                <div class="elg-column" >
+                    <div class="formelm" >
+                        <button class="btn btn-primary">
+                            <?php echo JText::_('COM_ELGERGASIA_EDIT'); ?>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <?php endif; ?>
+  </div>
+    
     </div>  
-	<?php endif; ?>
+    <?php endif;  // end show photos?>
  <div class="clearfix">&nbsp;</div>
  
  

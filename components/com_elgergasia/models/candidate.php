@@ -172,9 +172,7 @@
                 $db->setQuery($query);
         return $db->loadObjectList();
     }
-      
-   
-   
+     
     private function getRelationPreferences($id, $db, $query) {
        $query->clear();
        $query->select("r.relationType")
