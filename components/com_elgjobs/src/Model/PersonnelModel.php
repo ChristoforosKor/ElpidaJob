@@ -132,4 +132,33 @@ class PersonnelModel extends ItemModel {
 //        echo $query -> dump();
         return $this ->getDbo() -> setQuery($query) -> loadObjectList();
     }
+    
+    public function deleteFile($data) {
+         
+        $db = $this->getDbo();
+        $query = $db -> getQuery(true);
+        $query ->select ('paperFile') ->from('#__elg_ergasia_employer_paper')->where('id =' . $data->id);
+        $db->setQuery($query);
+        $fileInDB = $db->loadResult();  
+        $dbExists  = $fileInDB === null ? false: true; // in case the record is deleted from the db but the file still exists.
+        if ($fileInDB !== $data->file && $dbExists) {
+            throw new \Exception('Wrong data submitted');
+        }
+        $query->clear();
+        $query->delete("#__elg_ergasia_employer_paper")->where('id=' . $data->id);
+        $db->setQuery($query);
+        $db->execute();
+        $filePaths = explode('/images/', $fileInDB);
+        $file = JPATH_SITE . '/images/' . $filePaths[1];
+        $fileExists = file_exists($file);
+        if ($fileExists)
+        {
+            unlink($file);
+        }
+        if (!$dbExists && !$fileExists) 
+        {
+            throw new \Exception('File not found');
+        }
+        
+    }
 }
