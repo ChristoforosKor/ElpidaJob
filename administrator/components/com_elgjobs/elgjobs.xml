@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" method="upgrade">
+    <name>ELG Jobs</name>
+    <creationDate>February 2022</creationDate>
+    <copyright>E-Logism 2022</copyright>
+    <license>E-Logism propriatery license</license>
+    <version>0.0.1</version>
+    <description>
+        A job search component
+    </description>
+
+    <!-- This is the PHP namespace under which the extension's
+    code is organised. It should follow this format:
+    
+    Vendor\Component\ComponentName
+
+    "Vendor" can be your company or your own name
+    
+    The "ComponentName" section MUST match the name used 
+    everywhere else for your component. Whatever the name of 
+    this XML file is, the namespace must match (ignoring CamelCase). 
+    -->
+    <namespace path="src/">ELG\Component\ElgJobs</namespace>
+            
+    <files folder="site/">
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>        
+    <administration>
+        <menu link="index.php?option=com_elgjob">Elg Jobs</menu>
+        <files folder="admin/">
+            <folder>services</folder>
+            <folder>src</folder>
+            <folder>tmpl</folder>
+        </files>
+    </administration>
+    <api>
+        <files folder="api/components/com_elgjobs">
+            <folder>src</folder>
+        </files>
+    </api>
+</extension>

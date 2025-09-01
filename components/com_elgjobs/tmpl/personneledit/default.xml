@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Επεξεργασία Προσωπικού">
+        <message><![CDATA[Φόρμα επεξεργασίας προσωπικού]]></message>
+    </layout>
+    <fields name="request">
+       
+    </fields>
+</metadata>

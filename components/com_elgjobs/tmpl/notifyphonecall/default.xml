@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Notification Phone Call End Point">
+        <message><![CDATA[Notification Phone Call End Point]]></message>
+    </layout>
+    <fields name="request">
+            <fieldset name="request">
+                    <field
+                                    name="task"
+                                    type="text"
+                                    label="Task"
+                                    default="notify.notifyCall">
+                            
+                    </field>
+            </fieldset>
+	</fields>
+</metadata>

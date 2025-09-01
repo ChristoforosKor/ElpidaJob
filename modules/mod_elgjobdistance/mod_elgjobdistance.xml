@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="upgrade">
+    <name>E-Logism Job Distance</name>
+    <author>e-logsim</author>
+    <version>2.0.0</version>
+    <description>Jobs Filters by distance</description>
+    <files>
+        <filename>mod_elgjobdistance.xml</filename>
+        <filename module="mod_elgjobdistance">mod_elgjobdistance.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+</extension>

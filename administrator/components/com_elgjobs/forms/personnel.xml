@@ -1,0 +1,263 @@
+<form>
+	<fields addfieldpath="/administrator/components/com_elgjobs/fields/">
+            <fieldset name="basicset" label="COM_ELGERGASIA_VIEW_EMPLOYEE_CONTACT_DATA" >
+                <field name="id" type="hidden" />
+                <field name="idUser" type="hidden" />
+                
+                <field name="language" type="hidden" />
+                <field name="useMyData" type="checkbox" value="1" label="COM_ELGERGASIA_VIEW_EMPLOYEE_USE_MY_DATA" />
+                <field name="showPhoto" type="checkbox" value="1" label="COM_ELGERGASIA_VIEW_EMPLOYEE_SHOW_PHOTO" />
+                <field name="showName" type="checkbox" value="1" label="COM_ELGERGASIA_VIEW_EMPLOYEE_SHOW_NAME" />
+                <field name="lat" type="text" readonly="true" required="true" label="COM_ELGJOBS_LATITUDE" />
+                <field name="lng" type="text" readonly="true" required="true"  label="COM_ELGJOBS_LONGITUDE" />
+                <field name="suburb" type="text" readonly="true" required="true" label="COM_ELGJOBS_CITY"  />
+                <field name="state" type="text" readonly="true" required="true"  label="COM_ELGJOBS_GEOSTATE"/>
+                <field name="country" type="text" readonly="true" required="true" label="COM_ELGJOBS_COUNTRY" />
+                <field name="postcode" type="text" readonly="readonly" required="true" label="COM_ELGERGASIA_VIEW_EMPLOYEE_POSTAL_CODE_LABEL"
+                    
+		/>      
+                <field name="termsofuse" type="checkbox" required="true" value="1" label="COM_ELGERGASIA_VIEW_TERMS_OF_USE" />
+                <field name="accept_photo" type="checkbox"  value="1" label="COM_ELGERGASIA_VIEW_ACCEPT_PHOTO" />
+                <field name="name" type="text" required="true" label="COM_ELGERGASIA_VIEW_CANDIDATE_FIRSTNAME" />
+                <field name="lastname" type="text" required="true" label="COM_ELGERGASIA_VIEW_CANDIDATE_LASTNAME" />
+                <field 
+                    name="idSpeciality" 
+                    label="COM_ELGERGASIA_CANDIDATE_SPECIALITY"
+                    type="sqlLang"
+                    query="select id, speciality from #__elg_ergasia_speciality s inner join #__elg_ergasia_speciality_translation st on s.id = st.idSpeciality and {language} where  id>0 order by ordering, speciality"
+                    value_field="speciality"
+                    key_field="id"
+                    class="form-control select2 "
+                    multiple="true"
+                >
+                    
+                </field>
+                 <field
+                    name="idHour"
+                    multiple="multiple"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_HOURS"
+                    label="COM_ELGERGASIA_HOURS_DESC"
+                    value_field="hour"
+                    query ="select idHour as value, hour  from #__elg_ergasia_hour_translation where {language} order by ordering, hour"
+                    class="form-control select2"
+                >
+                </field>
+                
+                 <field 
+                    name="idSpecialNeed" 
+                    label="COM_ELGERGASIA_CANDIDATE_SPECIALNEEDS"
+                    type="sqlLang"
+                    query="select idSpecialNeed, specialNeed from #__elg_ergasia_specialneeds_translation where  {language} order by specialNeed asc"
+                    value_field="specialNeed"
+                    key_field="idSpecialNeed"
+                    class="form-control select2 "
+                    multiple="true"
+                >
+                    
+                </field>
+                <field
+                    name="idCountry"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_COUNTRY_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_COUNTRY_LABEL"
+                    query ="select idCountry as value, country as idCountry from #__elg_country_translation inner join #__elg_country on id=idCountry and {language} order by ordering, country"
+                     class="form-control"
+                />
+                <field
+                    name="published"
+                    type="list"
+                    label="COM_ELGERGASIA_STATE"
+                    default="1"
+                     class="form-control"
+                >
+                    <option value="1">Διαθέσιμο</option>
+                    <option value="0">Μη Διαθέσιμο</option>
+                    
+                </field>               
+<!--                <field
+                    name="city"
+                    type="text"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_CITY_DESC"
+                    filter="string"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_CITY_LABEL"
+                    size="30"
+                    class="form-control"
+                />-->
+<!--                <field
+                    name="region"
+                    type="text"
+                    id="region"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_REGION_LABEL_DESC"
+                    filter="string"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_REGION_LABEL"
+                    size="30"
+                    class="form-control"
+                />-->
+                <field
+                    name="email_to"
+                    type="email"
+                    description="E-Mail"
+                    filter="string"
+                    label="E-mail"
+                    size="30"
+                    class="form-control"
+		/>
+                <field
+                    name="address"
+                    id="autocomplete"
+                    type="text"
+                    placeholder="Εισάγετε διεύθυνση"                   
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_ADDRESS_LABEL"
+                    size="30"
+                    class="map_address_input mb-2 mb-md-0"
+		/>
+        <field
+                    name="address2"
+                    type="hidden"
+                    default=""
+                    class="map_address_input mb-2 mb-md-0"
+		/>
+               
+                <field
+                    name="telephone"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_PHONE_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_PHONE_LABEL"
+                    size="30"
+                    class="form-control"
+		/>
+                <field
+                    name="mobile"
+                    type="text"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_MOBILE_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_MOBILE_LABEL"
+                    size="30"
+                    required="true"
+                    class="form-control"
+                />
+                <field
+                    name="fax"
+                    type="text"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_FAX_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_FAX_LABEL"
+                    size="30"
+                    class="form-control"
+                />
+                
+                <field
+                    required="true"
+                    name="dateOfBirth"
+                    type="calendar"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_FIELD_DOB"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_DOB_DESC"
+                    class="form-control"
+                    format="%d/%m/%Y"
+                />
+              
+               <field
+                    name="idNationality"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_CANDIDATE_NATIONALITY_DESC"
+                    filter="string"
+                    label="COM_ELGERGASIA_VIEW_CANDIDATE_NATIONALITY_LABEL"
+                    required="true"
+                    query = "select idCountry as value, country as idNationality  from #__elg_country_translation inner join #__elg_country on id = idCountry and {language} order by ordering, country "
+                    class="form-control"
+                />    
+               
+                <field
+                    name="misc"
+                    type="textarea"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_ABOUT_ME_LABEL_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_ABOUT_ME_LABEL"
+                    cols="60"
+                    rows="3"
+                    filter="safehtml"
+                   
+                    class="form-control"
+                   />
+               
+               
+                
+                <field name="idGender" 
+                        default="2" 
+                        label="COM_ELGERGASIA_VIEW_EMPLOYEE_GENDER" 
+                        description="COM_ELGERGASIA_VIEW_EMPLOYEE_GENDER_DESC"
+                        type="sqlLang" 
+                        required="true"
+                        query="select idGender as value, gender as idGender from #__elg_ergasia_gender_translation where {language} order by gender"
+                        class="form-control"
+                       
+                />
+                 
+               
+                
+                <field name="candidatePhotoUpload1" 
+                   type="file" 
+                   label="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD" 
+                   description="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD_DESC" 
+                   size="10" accept="image/*" 
+                 />
+                <field name="candidatePhotoUpload2" 
+                   type="file" 
+                   label="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD" 
+                   description="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD_DESC" 
+                   size="10" accept="image/*" />
+                <field name="candidatePhotoUpload3" 
+                   type="file" 
+                   label="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD" 
+                   description="COM_ELGALOCRM_CANDIDATE_PHOTO_UPLOAD_DESC" 
+                   size="10" accept="image/*" />
+                <field name="candidateFileUpload" 
+                   type="file" 
+                   label="COM_ELGALOCRM_CANDIDATE_FILE_UPLOAD" 
+                   description="COM_ELGALOCRM_CANDIDATE_FILE_UPLOAD_DESC" 
+                   multiple="true"
+                   size="10"  />
+                
+                <field name="idUserTeam"
+                    type="list"
+                    label="COM_ELGJOBS_TEAM"
+                    multiple="true"
+                   
+                />
+                
+                <field
+                   
+                    name="lastOfficeVisit"
+                    type="calendar"
+                    label="COM_ELGJOBS_CANDIDATE_LAST_VISIT"
+                    description="COM_ELGJOBS_CANDIDATE_LAST_VISIT_DESC"
+                    class="form-control"
+                    format="%d/%m/%Y"
+                    required="true"
+                />
+                
+                 <field
+                    name="idInsurance"
+                    type="sql"
+                    label="COM_ELGJOBS_INSURANCE"
+                    description="COM_ELGJOBS_INSURANCE_DESC"
+                    query ="select id as value, insurance as idInsurance from #__elg_insurance"
+                    class=" form-select  form-control"
+                >
+                    <option value="">COM_ELGJOBS_UKNOWN</option>
+                 </field>
+                 
+                <field
+                    name="idRecommentation"
+                    type="list"
+                    label="COM_ELGJOBS_CANDIDATE_RECOMENDATION_AVAILABLE"
+                    description="COM_ELGJOBS_CANDIDATE_RECOMENDATION_AVAILABLE_DESC"
+                    class=" form-select  form-control"
+                    value="1"
+                >
+                    <option value="2">COM_ELGJOBS_UKNOWN</option>
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                    
+                </field>     
+                
+            </fieldset>
+	</fields>
+</form>

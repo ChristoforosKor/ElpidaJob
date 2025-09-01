@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Αποθήκευση Εργοδότη">
+        <message><![CDATA[Αποθήκευση εργοδότη]]></message>
+    </layout>
+    <fields name="request">
+            <fieldset name="request">
+                    <field
+                                    name="task"
+                                    type="test"
+                                    label="Task"
+                                    default="employer.save">
+                    </field>
+            </fieldset>
+	</fields>
+</metadata>

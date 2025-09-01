@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Διαγραφή αρχείου αγγελια">
+        <message><![CDATA[Διαγραφή αρχείου αγγελίας]]></message>
+    </layout>
+    <fields name="request">
+		<fieldset name="request">    
+			<field name="task" 
+				type="text"
+				label=""
+				required=""
+				description=""
+				default="job.deleteFile"
+			/>
+		</fieldset>
+	</fields>
+    
+</metadata>

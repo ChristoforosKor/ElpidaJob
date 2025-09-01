@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="upgrade">
+    <name>E-Logism Candidate Filter</name>
+    <author>e-logsim</author>
+    <version>2.0.0</version>
+    <description>Candidate related filters</description>
+    <files>
+        <filename>mod_elgcandidatefilter.xml</filename>
+        <filename module="mod_elgcandidatefilter">mod_elgcandidatefilter.php</filename>
+        <filename>index.html</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+</extension>

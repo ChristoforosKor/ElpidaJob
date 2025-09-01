@@ -1,0 +1,291 @@
+<?php
+
+namespace  ELG\Component\ElgJobs\Site\Controller;
+
+defined('_JEXEC') or die;
+
+//use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\MVC\Controller\FormController;
+use Joomla\CMS\Form\Form;
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Model\BaseDatabaseModel;
+use Joomla\Input\Input;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Factory\MVCFactoryInterface; 
+use Joomla\CMS\Application\CMSApplication;
+use Joomla\CMS\Form\FormFactoryInterface;
+//use Joomla\CMS\Router\Route;
+//use ELG\Component\ElgJobs\Site\Model\Helpers\ModelHelper;
+
+/**
+ * @package     ELG.Job.Site
+ * @subpackage  com_elgjob
+ *
+ * 
+ * @copyright   Copyright (C) 2022 E-Logism. All rights reserved.
+ * @license     E-Logism Propriatery Licence. 
+ * 
+ */
+
+/**
+ * ELG Job Controller
+ * @since  0.0.1
+ */
+class JobeditController extends FormController {
+
+   
+    
+    
+    public function edit_($key = null, $urlVar = null) {
+        
+        $model = $this->getModel("Jobedit");
+        $table = $model->getTable("job");
+        $context = "$this->option.edit.$this->context";
+
+        // Determine the name of the primary key for the data.
+        if (empty($key))
+        {
+                $key = $table->getKeyName();
+        }
+
+        // To avoid data collisions the urlVar may be different from the primary key.
+        if (empty($urlVar))
+        {
+                $urlVar = $key;
+        }
+        // Access check.
+        if (!$this->allowEdit(array($key => $recordId), $key))
+        {
+            $this->setMessage(Text::_('JLIB_APPLICATION_ERROR_EDIT_NOT_PERMITTED'), 'error');
+            $this->setRedirect("/aggelies.html");
+            return false;
+        }
+        
+        $recordId = (int) (\count($cid) ? $cid[0] : $this->input->getInt($urlVar));
+        $checkin = $table->hasField('checked_out');
+        
+        
+        // Attempt to check-out the new record for editing and redirect.
+        if ($checkin && !$model->checkout($recordId))
+        {
+                // Check-out failed, display a notice but allow the user to see the record.
+                $this->setMessage(Text::sprintf('JLIB_APPLICATION_ERROR_CHECKOUT_FAILED', $model->getError()), 'error');
+
+                $this->setRedirect( "/aggelia.html?id=" . $recordId );
+
+                return false;
+        }
+        else
+        {
+                // Check-out succeeded, push the new record id into the session.
+                $this->holdEditId($context, $recordId);
+                Factory::getApplication()->setUserState($context . '.data', null);
+                $this->setRedirect('/epexergasia-aggelias?id=' . $recordId );
+                return true;
+        }
+        
+    }
+    
+    
+    
+    public function display_($cachable = false, $urlparams = array()) {     
+              
+        $this -> populateModelState($this -> getModel(), $this -> input);        
+        $document = Factory::getDocument();
+        $viewName = $this->input->getCmd('view', 'login');
+        $viewFormat = $document->getType();
+        $view = $this->getView($viewName, $viewFormat);
+        $model = $this -> getModel($viewName);
+        $view->document = $document;
+        $view -> setModel( $model, true);
+        $view->display();
+        Form::addFieldPath(JPATH_COMPONENT_ADMINISTRATOR . "/fields");
+        parent::display($cachable = false, $urlparams = array());
+    }
+    
+    
+    private function getSubmitedData(BaseDatabaseModel $model, Input $input) {
+        
+        $data = 
+                [
+                    "idJobState" => $input -> getInt('idJobState', 1),
+                    "idSpeciality" => $input -> getInt('idSpeciality', null),
+                    "idCounty" =>  $input -> getInt("idCounty", null),
+                    "daysOff" => $input -> getInt("daysOff"),
+                    "idHour" => $input -> getInt('idHour', null),
+                    "jobSalary" => $input -> getInt('jobSalary', null),
+                    "jobTitle" => $input -> getString('jobTitle', ''),
+                    "jobDescription" => $input -> getString('jobDescription', ''),
+                    "idDegreeLevel" => $input -> getInt('idDegreeLevel', 0),
+                    "jobStartDate" => $input -> getString('jobStartDate', ''),
+                    'language' => $input -> getString('language', 'el-GR'),
+                    'lat' => $input -> getFloat('lat', 0),
+                    'lng' => $input -> getFloat('lng', 0),
+                    'idUser' => $this -> app -> getIdentity() -> id,
+                    
+                ];
+        return $data;
+    }
+    
+    public function save($key = null, $urlVar = null) {
+        $this->checkToken();
+        $app   = Factory::getApplication();
+//        $viewName = $this->input->get('view', $this->default_view);
+        $model = $this->getModel('Jobsave');
+        $data =  $this ->getSubmitedData($model, $this -> input);
+	$table = $model-> getTable('Job');
+	$view_list = '/aggelies.html';
+        $view_item = '/epexergasia-aggelias';
+//	$checkin = $table->hasField('checked_out');
+	$context = "$this->option.edit.$this->context";
+//	$task = $this->getTask();
+
+	// Determine the name of the primary key for the data.
+	if (empty($key))
+	{
+            $key = $table->getKeyName();
+	}
+
+	// To avoid data collisions the urlVar may be different from the primary key.
+	if (empty($urlVar))
+	{
+            $urlVar = $key;
+	}
+
+	$recordId = $this->input->getInt($urlVar);
+
+		// Populate the row id from the session.
+        $data[$key] = $recordId;
+
+		
+
+        // Access check.
+        if (!$this->allowSave($data, $key))
+        {
+                $this->setMessage(Text::_('JLIB_APPLICATION_ERROR_SAVE_NOT_PERMITTED'), 'error');
+
+                $this->setRedirect( $view_list
+//                        Route::_(
+//                                'index.php?option=' . $this->option . '&view=' . $this->view_list
+//                                . $this->getRedirectToListAppend(), false
+//                        )
+                );
+
+                return false;
+        }
+
+        // Validate the posted data.
+        // Sometimes the form needs some posted data, such as for plugins and modules.
+        $form = $model->getForm($data, false);
+
+        if (!$form)
+        {
+            $app->enqueueMessage($model->getError(), 'error');
+
+            return false;
+        }
+
+        // Send an object which can be modified through the plugin event
+        $objData = (object) $data;
+        $app->triggerEvent(
+                'onContentNormaliseRequestData',
+                array($this->option . '.' . $this->context, $objData, $form)
+        );
+        $data = (array) $objData;
+
+        // Test whether the data is valid.
+        $validData = $model->validate($form, $data);
+
+        // Check for validation errors.
+        if ($validData === false)
+        {
+                // Get the validation messages.
+                $errors = $model->getErrors();
+
+                // Push up to three validation messages out to the user.
+                for ($i = 0, $n = \count($errors); $i < $n && $i < 3; $i++)
+                {
+                        if ($errors[$i] instanceof \Exception)
+                        {
+                                $app->enqueueMessage($errors[$i]->getMessage(), 'warning');
+                        }
+                        else
+                        {
+                                $app->enqueueMessage($errors[$i], 'warning');
+                        }
+                }
+
+			
+
+                    // Save the data in the session.
+                    $app->setUserState($context . '.data', $data);
+
+                    // Redirect back to the edit screen.
+                    $this->setRedirect(
+                            Route::_(
+                                    'index.php?option=' . $this->option . '&view=' . $view_item
+                                    /*. $this->getRedirectToItemAppend($recordId, $urlVar) */, false
+                            )
+                    );
+
+                    return false;
+            }
+
+		
+//            $modelHelper = new ModelHelper();
+//            $modelHelper->populateStateByArray($validData, $model);
+            // Attempt to save the data.
+            if (!$model->save($validData))
+            {
+                    // Save the data in the session.
+                    $app->setUserState($context . '.data', $validData);
+
+                    // Redirect back to the edit screen.
+                    $this->setMessage(Text::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', 
+                            implode('<br>', $model->getState() -> get('errors') )
+                            )
+                            , 'error');
+
+                    $this->setRedirect( $this -> view_item
+                           
+//                            Route::_(
+//                                    'index.php?option=' . $this->option . '&view=Jobedit'
+//                                    . $this->getRedirectToItemAppend($recordId, $urlVar), false
+//                            )
+                    );
+
+                    return false;
+            }
+
+		
+
+            $langKey = $this->text_prefix . ($recordId === 0 && $app->isClient('site') ? '_SUBMIT' : '') . '_SAVE_SUCCESS';
+            $prefix  = Factory::getLanguage()->hasKey($langKey) ? $this->text_prefix : 'JLIB_APPLICATION';
+
+            $this->setMessage(Text::_($prefix . ($recordId === 0 && $app->isClient('site') ? '_SUBMIT' : '') . '_SAVE_SUCCESS'));
+
+					
+            // Clear the record id and data from the session.
+            $this->releaseEditId($context, $recordId);
+            $app->setUserState($context . '.data', null);
+
+            // Redirect back to the edit screen.
+            $this->setRedirect(
+                    $view_item . "?id=" . $recordId
+//                    Route::_(
+//                            'index.php?option=' . $this->option . '&view=' . $this->view_item
+//                            . $this->getRedirectToItemAppend(null, $urlVar), false
+//                    )
+            );
+				
+			
+
+            // Invoke the postSave method to allow for the child class to access the model.
+            $this->postSaveHook($model, $validData);
+
+            return true;
+        
+
+    } 
+    
+}

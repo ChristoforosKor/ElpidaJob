@@ -1,0 +1,145 @@
+<form> 
+	<fields addfieldpath="/administrator/components/com_elgjobs/fields/">
+            <fieldset>
+             
+                <field name="id" type="hidden"  />
+                <field name="submitDate" type="hidden"  />
+                <field name="language" type="hidden" />
+                <field name="lat" type="text" readonly="true" label="COM_ELGJOBS_LATITUDE"  required="true" default="38.522359" />
+                <field name="lng" type="text" readonly="true" label="COM_ELGJOBS_LONGITUDE" equired="true" default="23.6320912" />
+               
+                <field name="city" type="text"  required="true" label="COM_ELGJOBS_CITY"  />
+                <field name="county" type="text"  required="true"  label="COM_ELGJOBS_GEOSTATE"/>
+                <field name="country" type="text"  required="true" label="COM_ELGJOBS_COUNTRY" />
+                <field name="postcode" type="text"  required="true" label="COM_ELGERGASIA_VIEW_EMPLOYEE_POSTAL_CODE_LABEL" />
+                <field name="documentFile" type="file" label="Αρχείο" size="10"  class="form-control" multiple="true"/>
+                <field
+                    name="address"
+                    required="true"
+                    id="autocomplete"
+                    type="text"
+                    placeholder="Εισάγετε διεύθυνση"                   
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_ADDRESS_LABEL"
+                    size="30"
+                    class="map_address_input mb-2 mb-md-0"
+		/>
+                <field 
+                    name="idJobState" 
+                    type="sqlLang"
+                    label="COM_ELGERGASIA_STATE"
+                    query="select id, jobState from #__elg_ergasia_jobstates  where {language}"
+                    value_field="jobState"
+                    key_field="id"
+                    class="form-control"
+                    default="2"
+                />
+
+                <field 
+                    name="idCandidate" 
+                    type="list"
+                    label="COM_ELGCANDIDATE"
+                    class="form-control select2"
+                    multiple="true"
+                >
+             
+                </field>
+
+                <field name="extUrl" type="text" label="COM_ELGERGASIA_EXTERNAL_URL"  class="form-control"/>
+               
+                <!-- field name="jobCost" type="text" label="COM_ELGERGASIA_JOBS_COST" required="true" class="form-control"/ -->
+                <!--    <field 
+                    name="idCounty" 
+                    label="COM_ELGERGASIA_JOB_PLACE"
+                    type="sqlLang"
+                    query="select idCounty, county from #__elg_county_translation where {language} order by county"
+                    value_field="county"
+                    key_field="idCounty"
+                    required="true"
+                    class="form-control"
+                >
+                    <option value="">COM_ELGERGASIA_VIEW_EMPLOYEE_SELECT</option>
+                </field>  -->
+                <field 
+                    name="idSpeciality" 
+                    label="COM_ELGERGASIA_CANDIDATE_SPECIALITY"
+                    type="sqlLang"
+                    query="select id, speciality from #__elg_ergasia_speciality s inner join #__elg_ergasia_speciality_translation st on s.id = st.idSpeciality and {language} where  id>0 order by ordering, speciality"
+                    value_field="speciality"
+                    key_field="id"
+                    required="true"
+                    class="form-control select2"
+                >
+                     <option value="">COM_ELGERGASIA_VIEW_EMPLOYEE_SELECT</option>
+                </field>
+         
+              <field 
+                    name="idEmployer" 
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_EMPLOYER"
+                    type="sqlLang"
+                    query="select id, DiscreteTitle  from #__elg_ergasia_employer  order by DiscreteTitle"
+                    value_field="DiscreteTitle"
+                    key_field="id"
+                    required="true"
+                    class="form-control select2"
+                >
+                    <option value="">COM_ELGERGASIA_VIEW_EMPLOYEE_SELECT</option>
+                </field>
+                           
+                <field 
+                name="idDegreeLevel" 
+                type="sqlLang" 
+                label="COM_ELGERGASIA_JOB_EDIT_EDUCATION"
+                query="select id, degreeLevel  from #__elg_ergasia_degree_level d inner join #__elg_ergasia_degree_level_translation dt on d.id = dt.idDegreeLevel and {language}  where id > 0 order by ordering"
+                value_field="degreeLevel"
+                key_field="id"
+                class="form-control"
+                >
+                     <option value="">COM_ELGERGASIA_VIEW_EMPLOYEE_SELECT</option>
+                </field>
+                <field
+                    name="idHour"
+                    type="sql"
+                    label="COM_ELGERGASIA_HOURS"
+                    query ="select h.id as value, t.hour as idHour  from #__elg_ergasia_hour h inner join #__elg_ergasia_hour_translation t on h.id = t.idHour and t.language = 'el-GR'  order by t.ordering, t.hour"
+                    class="form-control"
+                    required="true"
+                >
+                     <option value="">COM_ELGERGASIA_SELECT</option>
+                </field>
+
+                <field 
+                    name="idSpecialNeed" 
+                    label="COM_ELGERGASIA_CANDIDATE_SPECIALNEEDS"
+                    type="sqlLang"
+                    query="select idSpecialNeed, specialNeed from #__elg_ergasia_specialneeds_translation where  {language} order by specialNeed asc"
+                    value_field="specialNeed"
+                    key_field="idSpecialNeed"
+                    class="form-control"
+					
+                >
+                    <option value="">COM_ELGERGASIA_SELECT</option> 
+                </field>
+                <field
+                    name="idOldPeople"
+                    type="sql"
+                    label="COM_ELGERGASIA_OLD_PEOPLE"                   
+                    query ="select id as value, oldPeople as idOldPeople  from #__elg_ergasia_oldpeople order  by id"
+                     class="form-control"
+                >
+                    <option value="">COM_ELGERGASIA_SELECT</option>
+                </field>
+                <field name="daysOff" type="text" label="COM_ELGERGASIA_DAYS_OFF"  required="true" class="form-control" />
+                
+                <!-- field name="minExperience" type="text" label="COM_ELGERGASIA_JOB_EDIT_EXPERIENCE"  required="true" class="form-control" / -->
+                <field name="jobSalary" type="text" label="COM_ELGJOBS_SALARY"   class="form-control" required="true"/>
+                <field name="areasize" type="text" label="COM_ELGJOBS_SIZE_AREA"   class="form-control" />
+                <field name="jobComment" type="textarea" cols="50" rows="10" label="COM_ELGERGASIA_JOB_EDIT_COMMENT" class="form-control" />
+                <field name="jobImage1" type="file" label="Image 1" size="10"  class="form-control" />
+                <field name="jobImage2" type="file" label="Image 2" size="10" class="form-control" />
+                <field name="jobImage3" type="file" label="Image 3" size="10"  class="form-control" />
+                
+                <field name="jobTitle" type="text" label="COM_ELGERGASIA_JOBS_LISTING_TITLE" required="true" class="form-control"/>
+                <field name="jobDescription" type="textarea" cols="50" rows="10" label="COM_ELGERGASIA_JOB_EDIT_DESCRIPTION"  required="true" class="form-control" />
+           </fieldset>
+	</fields>
+</form>

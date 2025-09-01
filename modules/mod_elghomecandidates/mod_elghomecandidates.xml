@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="upgrade">
+    <name>Home Candidates</name>
+    <author>e-logsim</author>
+    <version>2.0.0</version>
+    <description>Home candidates</description>
+    <files>
+        <filename>mod_elghomecandidates.xml</filename>
+        <filename module="mod_elghomecandidates">mod_elghomecandidates.php</filename>
+        <filename>index.html</filename>
+        <filename>homecandidateshelper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    <config>
+    </config>
+</extension>

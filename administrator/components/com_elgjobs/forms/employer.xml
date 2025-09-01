@@ -1,0 +1,179 @@
+<form addrulepath="/components/com_elgergasia/models/rules" >
+	<fields>
+            <fieldset name="employerset" label="COM_ELGERGASIA_VIEW_EMPLOYEER" >
+                <field name="idSearch" type="text" 
+                    description="COM_ELGERGASIA_ID_DESC"
+                    label="COM_ELGERGASIA_ID"
+                    tabindex="1"
+                    size="30"
+                    class="form-control"/>
+                <field name="nameSearch" type="text" 
+                    description="COM_ELGERGASIA_FULLNΑΜΕ_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYER_NAME"
+                    tabindex="2"
+                    size="30"
+                    class="form-control"/>
+                 
+                <field name="id" type="hidden" />
+                <field name="idUser" type="hidden" />
+                <field name="language" type="hidden" />
+                <field name="salutation" type="list" 
+                label="COM_ELGERGASIA_VIEW_EMPLOYEER_SALUTATION"
+                       description="COM_ELGERGASIA_VIEW_EMPLOYEER_SALUTATION_DESC" class="form-control" >
+                    <option value="COM_ELGERGASIA_MR">COM_ELGERGASIA_MR</option>
+                    <option value="COM_ELGERGASIA_MRS">COM_ELGERGASIA_MRS</option>
+                </field>
+                 <field
+                    name="DiscreteTitle"
+                    type="text"
+                    label="COM_ELGERGASIA_EMPLOYER_DISCRETE_TITLE"
+                    size="80"
+                    required="true"
+                    class="form-control"
+                />
+                 <field
+                    name="name"
+                    type="text"
+                    label="COM_ELGERGASIA_FILTER_EMPLOYER_FULLNAME"
+                    size="80"
+                    required="true"
+                    class="form-control"
+                />
+                
+                <field
+                    name="idEmployerType"
+                    type="sql"
+                    label="Είδος Εργοδότη"
+                    query ="select id as value, EmployerType as idEmployerType from #__elg_ergasia_employertype order by EmployerType"
+                    required="true"
+                    class="form-control"
+                />
+                 
+               <field
+                    name="idIndustry"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYER_INDUSTRY_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYER_INDUSTRY"
+                    query ="select id as value, industry as idIndustry from #__elg_ergasia_industry i inner join #__elg_ergasia_industry_translation it on i.id = it.idIndustry and {language} order by ordering, industry"
+                    class="form-control"
+                />
+                   
+                
+                 <field
+                    name="Profession"
+                    type="text"
+                    description="COM_ELGERGASIA_ACTIVITY_EMPLOYER_DESC"
+                    label="COM_ELGERGASIA_ACTIVITY"
+                    size="30"
+                    class="form-control"
+                />
+                
+                <field
+                    name="WebPage"
+                    type="text"
+                    description="COM_ELGERGASIA_WEBSITE_EMPLOYER_DESC"
+                    label="COM_ELGERGASIA_WEBSITE"
+                    size="30"
+                    class="form-control"
+                />
+                <field
+                    name="Email"
+                    validate="isusermailunique"
+                    type="text"
+                    description="COM_ELGERGASIA_WEBSITE_EMPLOYER_EMAIL"
+                    message="COM_ELGERGASIA_ERROR_EMAIL_OR_UNIQUE"
+                    label="COM_ELGERGASIA_EMAIL"
+                    size="30"
+                    class="form-control"
+                />
+                <field
+                    name="idCountry"
+                    type="sqlLang"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEER_COUNTRY_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_COUNTRY_LABEL"
+                    tabindex="5"
+                    query ="select id as value, country as idCountry from #__elg_country inner join #__elg_country_translation on id = idCountry and {language}  order by ordering, country"
+                    class="form-control"
+                />
+                    
+                
+                <field
+                    name="EmpArea"
+                    type="text"                 
+                    label="COM_ELGERGASIA_VIEW_EMPLOYER_CITY_LABEL"
+                    size="30"
+                    class="form-control"
+                />
+               
+                <field
+                    name="EmpAddress"
+                    type="text"
+                    label="COM_ELGERGASIA_VIEW_ADDRESS"
+                    size="30"
+                    class="form-control"
+		/>
+                
+                
+                
+                <field
+                    name="Zip"
+                    type="text"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_POSTAL_CODE_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_POSTAL_CODE_LABEL"
+                    size="30"
+                    class="form-control"
+		/>
+                
+                <field
+                    name="TaxOffice"
+                    type="text"
+                    description="COM_ELGERGASIA_TAX_OFFICE_DESC"
+                    label="COM_ELGERGASIA_TAX_OFFICE"
+                    size="30"
+                    class="form-control"
+		/>
+                
+                 <field
+                    name="TaxNo"
+                    type="text"
+                    description="COM_ELGERGASIA_TAX_NUMBER_DESC"
+                    tabindex="10"
+                    label="COM_ELGERGASIA_TAX_NUMBER"
+                    size="30"
+                    class="form-control"
+		/>
+                
+                <field
+                    name="Telephone"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_PHONE_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_PHONE_LABEL"
+                    size="30"
+                    class="form-control"
+		/>
+                <field
+                    name="Mobile"
+                    type="text"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_MOBILE_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_MOBILE_LABEL"
+                    size="30"
+                    class="form-control"
+                />
+                <field
+                    name="Fax"
+                    type="text"
+                    description="COM_ELGERGASIA_VIEW_EMPLOYEE_FAX_DESC"
+                    label="COM_ELGERGASIA_VIEW_EMPLOYEE_FAX_LABEL"
+                    size="30"
+                    class="form-control"
+                />
+                <field name="Comments" type="textarea"  label="COM_ELGERGASIA_COMMENTS" description="COM_ELGERGASIA_COMMENTS_EMPLOYER_DESC"  rows="10" class="form-control" />
+                <field
+                    name="datemodified"
+                    type="calendar"
+                    label="COM_ELGERGASIA_LAST_UPDATE"
+                    description="COM_ELGERGASIA_LAST_UPDATE_FILTER_DESC"
+                    class="form-control"
+                 />
+            </fieldset>
+	</fields>
+</form>

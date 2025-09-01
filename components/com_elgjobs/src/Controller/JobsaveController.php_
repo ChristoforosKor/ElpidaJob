@@ -1,0 +1,59 @@
+<?php
+
+namespace  ELG\Component\ElgJobs\Site\Controller;
+
+defined('_JEXEC') or die;
+
+//use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\MVC\Controller\FormController;
+use Joomla\CMS\Form\Form;
+use Joomla\CMS\MVC\Model\BaseDatabaseModel;
+use Joomla\Input\Input;
+
+/**
+ * @package     ELG.Job.Site
+ * @subpackage  com_elgjob
+ *
+ * 
+ * @copyright   Copyright (C) 2022 E-Logism. All rights reserved.
+ * @license     E-Logism Propriatery Licence. 
+ * 
+ */
+
+/**
+ * ELG Job Controller
+ * @since  0.0.1
+ */
+class JobsaveController extends FormController {
+    
+    
+    
+    public function display($cachable = false, $urlparams = array()) {     
+              
+        $this -> populateModelState($this -> getModel(), $this -> input);
+        
+        
+        
+//        $document = Factory::getDocument();
+//        $viewName = $this->input->getCmd('view', 'login');
+//        $viewFormat = $document->getType();
+//        
+//        $view = $this->getView($viewName, $viewFormat);
+//        $model = $this -> getModel();
+//        $view->document = $document;
+//        $view -> setModel( $model, true);
+//        $view->display();
+        Form::addFieldPath(JPATH_COMPONENT_ADMINISTRATOR . "/fields");
+        parent::display($cachable = false, $urlparams = array());
+    }
+    
+    
+    private function populateModelState(BaseDatabaseModel $model, Input $input) {
+        $model -> setState("idJobState", $input -> getInt('idJobState', 1) );
+        $model -> getState("view");
+        exit;
+        
+    }
+    
+    
+}
