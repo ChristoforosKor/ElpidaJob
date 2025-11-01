@@ -98,7 +98,7 @@ class PersonnelModel extends ItemModel {
         $iemt['specialities'] = [];
         $item['specialNeeds'] = [];
         $item['candidateHours'] = [];
-        $item['documents'] = [];
+        $item['documents'] = '';
         return $item;
     }
 
