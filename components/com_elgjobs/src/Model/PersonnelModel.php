@@ -95,7 +95,7 @@ class PersonnelModel extends ItemModel {
         $item['lng'] = 0;
         $item['lat'] = 0;
         $item['comments'] = [];
-        $iemt['specialities'] = [];
+        $item['specialities'] = [];
         $item['specialNeeds'] = [];
         $item['candidateHours'] = [];
         $item['documents'] = '';
