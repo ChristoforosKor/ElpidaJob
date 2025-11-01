@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="filter">
+        
+            <field
+                name="jobState"
+                type="sql"
+                label="Κατάσταση"
+                required="false"
+                label_class="filters_list_block_title"
+                label_style="border-bottom: 2px solid #3498db; padding-bottom: 5px; margin-top: 20px;"
+                class="form-control"
+                query="SELECT id, jobState FROM `#__elg_ergasia_jobstates` where language = 'el-GR'"
+                key_field="id"
+                value_field="jobState"
+            >
+                <option value="">ΟΛΑ</option>
+            </field>
+        
+            
+    </fields>
+</form>
+        

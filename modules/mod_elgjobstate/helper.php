@@ -1,6 +1,6 @@
 <?php
 
-class JobHoursHelper {
+class JobStateHelper {
 
     public static function getData() {
         $langTag = JFactory::getLanguage()->getTag();
