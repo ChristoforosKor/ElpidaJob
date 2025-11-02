@@ -129,13 +129,17 @@ use Joomla\CMS\Language\Text;
 <div class="seperator-l"></div>
 
  <?php if ( $this -> isAuthorised == 1  and isset($this -> item['documents']) ) : 
+     
 	$documents = explode(",", $this -> item['documents']);
-    // var_dump($this -> item['documents']);exit;
-	$idDocuments = explode(",", $this -> item['idDocuments']);
-        foreach ( explode(",", $this->item['documents']) as $document ): ?>
-<span class="d-inline bg-info isFile"><a href="<?php echo str_replace(JPATH_SITE, '', $document); ?>" class="text-white" target="_blank" ><?php echo basename($document); ?></a></span>
-<?php endforeach;
-endif; ?>
+        $idDocuments = explode(",", $this -> item['idDocuments']); ?>
+<div class="personnel-files">
+        <?php for ( $i = count($documents) -1; $i > -1; $i-- ): 
+            
+            ?>
+<span class="bg-info d-inline"><a href="<?php echo str_replace(JPATH_SITE, '', $documents[$i]); ?>" class="isFile" target="_blank" data-id="<?php echo $idDocuments[$i]; ?>" data-file="<?php echo $documents[$i];?>" ><?php echo basename($documents[$i]); ?></a> <a class="badge bg-warning a-delete">X</a></span>
+        <?php endfor; ?>
+</div>
+<?php endif; ?>
                         <div class="seperator-l"></div>
 
                     
@@ -367,12 +371,72 @@ endif; ?>
   </div>
 </div>
 
+
+<div  id="modal0" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+ <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title"></h4>
+            <button id ="cancel" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="messageArea"></div>
+        </div>
+      
+        <form name="interestForm"  method="post" enctype="multipart/form-data" > 
+            <div class="modal-body">
+                          
+            </div>
+            <div class="response text-center"></div>
+            <div class="visually-hidden loader text-center" role="status">
+                <span class="spinner-border text-primary"></span>
+            </div>
+
+            <div class="modal-footer">
+                <button id ="cancel1" type="button" class="button button_outlined dark" data-bs-dismiss="modal">Ακύρωση</button>
+                <button type="button" class="button button_filled bg_blue submit-button">Υποβολή</button>
+            </div>
+        </form>
+    </div>
+
+  </div>
+</div>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function (le) {
+    document.addEventListener('DOMContentLoaded', function (e) {
+        const elpidaModal = jQuery('#modal0');
+        const elpidaModalSubmitButton = elpidaModal.find('.submit-button');
+        const elpidaModalTitle = elpidaModal.find('.modal-title');
+        const elpidaModalBody = elpidaModal.find('.modal-body');
+        const elpidaModalResponse = elpidaModal.find('.response');
+        const elpidaModalLoader = elpidaModal.find('.loader');
+        let elpidaModalSubmitFunctionality = () => {};
+        elpidaModalSubmitButton.on('click', (e) => { 
+            elpidaModalSubmitFunctionality();
+        });
+        const elpidaModalShowBusy = () => {
+            elpidaModalBody.addClass('visually-hidden');
+            elpidaModalResponse.addClass('visually-hidden');
+            elpidaModalLoader.removeClass('visually-hidden');
+        };        
+                
+        const elpidaModalShowReady = () => {
+            elpidaModalBody.removeClass('visually-hidden');
+            elpidaModalResponse.removeClass('visually-hidden');
+            elpidaModalLoader.addClass('visually-hidden');
+        };   
         
+        const elpidaModalClear = () => {
+            elpidaModalBody.html('');
+            elpidaModalResponse.html('');
+            elpidaModalBody.removeClass('visually-hidden');
+            elpidaModalResponse.removeClass('visually-hidden');
+            elpidaModalLoader.addClass('visually-hidden');
+        };
+                
         document.getElementById('notifyJob').addEventListener('click', function(e){
             let postData = {};
-            postData.fullname = document.getElementById('notify_fullname').value.trim(/ /g, '')
+            postData.fullname = document.getElementById('notify_fullname').value.trim(/ /g, '');
             if ( postData.fullname === '' ) {
                 alert("Παρακαλώ συμπληρώστε το ονοματεπώνυμό σας.");
                 return;
@@ -400,6 +464,42 @@ endif; ?>
             });
                    
         });
+        
+        const delFileButtons = document.querySelectorAll('.personnel-files .a-delete');
+        for(let i = delFileButtons.length-1; i >= 0; i --) {
+            delFileButtons[i].addEventListener('click', (e) => {
+               elpidaModalClear();
+                elpidaData = {
+                    id: e.target.previousElementSibling.dataset.id,
+                    file: e.target.previousElementSibling.dataset.file
+                };
+                      
+                elpidaModalTitle.text('Επιβεβαίωση διαγραφής');
+                elpidaModalBody.html('<p>Θα διαγράψετε το:<br><strong>' + elpidaData.file.replace(/^.*[\\/]/, '') +'</strong>');
+                
+                elpidaModalSubmitFunctionality = () => {
+                    elpidaModalShowBusy();
+                    jQuery.post('/personnel.json?task=personnel.deleteFile', elpidaData, function(response){
+                        elpidaModalResponse.html('<p class="text-success">' + response.message + '</p>') ;
+                        const fileElement = document.querySelector(('a.isFile[data-id="' + elpidaData.id + '"]') );
+                        fileElement.parentNode.remove();
+                        elpidaModalShowReady();
+                        setTimeout(() =>{
+                            elpidaModal.modal('hide');
+                        }, 2000);
+                    })
+                            .fail(function(xhr, status, error){
+                                elpidaModalResponse.html('<p class="text-warning">' + xhr.responseJSON.message + '</p>');
+                                elpidaModalShowReady();
+                            });
+                                   
+                };
+                elpidaModal.modal('show');
+                
+            });
+        }
+        
+        
     });
     
     function elgClearNotificationModal() {

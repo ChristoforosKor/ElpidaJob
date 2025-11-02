@@ -7,7 +7,6 @@ use Joomla\CMS\MVC\Model\ItemModel;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
 
-
 class PersonnelModel extends ItemModel {
 
     public function getItem($pk = null) {
@@ -24,7 +23,7 @@ class PersonnelModel extends ItemModel {
                 . ", cd.published, cb.idGender, cd.postcode, cd.telephone, cd.email_to, cd.mobile, cd.fax"
                 . ", cb.idNationality, cb.dateOfBirth, st_x(cb.pt) as lng, st_y(cb.pt) as lat, ifNull(cb.suggestUp,0) as likes"
                 . ", cb.lastOfficeVisit, cb.idInsurance, cb.idRecommentation, ins.insurance "
-                . ", group_concat( distinct ep.paperFile) as documents, group_concat(ifNull(ep.id,'')) as idDocuments"
+                . ", group_concat( distinct ep.paperFile order by ep.paperFile) as documents, group_concat(distinct ifNull(ep.id,'') order by ep.paperFile) as idDocuments"
                 . ", GROUP_CONCAT(xeect.idContactTeam) as team, GROUP_CONCAT(cd.name) as teamnames ")
                 // . ", group_concat(ifNull(ep.paperFile,'')) as documents, group_concat(ifNull(ep.id,'')) as idDocuments")
                 -> from ("#__contact_details cd")  
@@ -47,7 +46,7 @@ class PersonnelModel extends ItemModel {
                 -> where ($this->getWhere($id))
                 -> group("cd.id, cd.name, cd.misc, cd.address, cd.suburb, cd.state, cd.country,cd.image, cd.published, cb.idGender, cd.postcode, cd.telephone"
                         . ", cd.email_to, cd.mobile, cd.fax, cb.idNationality, cb.dateOfBirth, cd.email_to, cb.suggestUp, xeect.idContactTeam, cd.name, cb.lastOfficeVisit, cb.idInsurance, cb.idRecommentation");
-//         echo $query -> dump();
+     //    echo $query -> dump();
         $item = $db -> setQuery($query) -> loadAssoc();
         if ( $item == null ) {
             return $this -> getNullObject();
@@ -149,8 +148,15 @@ class PersonnelModel extends ItemModel {
         $db->setQuery($query);
         $db->execute();
         $filePaths = explode('/images/', $fileInDB);
-        $file = JPATH_SITE . '/images/' . $filePaths[1];
-        $fileExists = file_exists($file);
+        if (isset($filePath[1]))
+        {
+            $file = JPATH_SITE . '/images/' . $filePaths[1];
+            $fileExists = file_exists($file);
+        }
+        else
+        {
+            $fileExists = false;
+        }
         if ($fileExists)
         {
             unlink($file);

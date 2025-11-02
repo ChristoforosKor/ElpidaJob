@@ -22,7 +22,7 @@ use Exception;
 
 
 // include JPATH_COMPONENT_SITE .'/libraries/joomla/models/translations.php';  
-include JPATH_COMPONENT_SITE .'src/Model/Helpers/translations.php';  
+include JPATH_COMPONENT_SITE .'/src/Model/Helpers/Translations.php';  
  
 
 
@@ -60,7 +60,8 @@ class PersonnelsaveModel extends PersonneleditModel {
             
             $storage = $this ->getCreateMonthFolder("papers");
             $documentsUploaded =  $commonUtils -> storeDocument( $storage, $values['candidateFileUpload'] , $contactResult);
-            $this->insertPapers($documentsUploaded, $contactResult);                    
+            $this->insertPapers($documentsUploaded, $contactResult);   
+            
             $existingContactId = $this ->getExistingBasicId($db, $contactResult);
                        
             if ($existingContactId == null || $existingContactId == 0) {
