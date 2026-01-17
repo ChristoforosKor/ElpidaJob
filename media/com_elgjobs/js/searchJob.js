@@ -10,8 +10,9 @@ function searchJob(){
     let start = (typeof pageStart === 'undefined' ? 0 : pageStart);
     let limit = (typeof pageLimit === 'undefined'  ? 5 : pageLimit);
     
-    
-    let endPoint = location.href.replace('.html', '.json');
+    let path = location.pathname.replace('.html', '') + '.json';
+    let search = location.search.replace('&format=html', '');
+    let endPoint = path + search; // location.href.replace('.html', '.json');
     center = {lat: 37.980453, lng: 23.7337859};
     
     zoom = 14;

@@ -486,7 +486,7 @@ use Joomla\CMS\Language\Text;
                         elpidaModalShowReady();
                         setTimeout(() =>{
                             elpidaModal.modal('hide');
-                        }, 2000);
+                        }, 1500);
                     })
                             .fail(function(xhr, status, error){
                                 elpidaModalResponse.html('<p class="text-warning">' + xhr.responseJSON.message + '</p>');

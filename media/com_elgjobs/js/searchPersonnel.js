@@ -22,8 +22,11 @@ function searchPersonnel(){
     center = {lat: 37.980453, lng: 23.7337859};
     
     zoom = 14;
-
-let endPoint = location.href.replace('.html', '.json');
+ 
+    let path = location.pathname.replace('.html', '') + '.json';
+    let search = location.search.replace('&format=html', '');
+    let endPoint = path + search; 
+//let endPoint = location.href.replace('.html', '.json');
 
   axios.
     get(endPoint).

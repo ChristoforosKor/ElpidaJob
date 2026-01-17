@@ -80,4 +80,27 @@ class PersonnelController extends ElgController {
         $this -> display(false);
     }
 
+    public function deleteFile()
+    {
+        $data = new \stdClass();
+        $data->id = $this->input->getInt('id');
+        $data->file = $this->input->getString('file');
+               
+        $model = parent::getModel();
+        $model->deleteFile($data);
+        
+        try {
+            $message = 'Το αρχείο διαγράφηκε επιτυχώς.';
+            $error = false;
+            $this->app->enqueueMessage('Το αρχείο διαγράφηκε επιτυχώς.');
+        }
+        catch (\Exception $e) {
+            $message = $e->getMessage();
+            $error= true;
+        }
+        
+       
+        echo new \Joomla\CMS\Response\JsonResponse($data, $message, $error);
+                
+    }
 }
