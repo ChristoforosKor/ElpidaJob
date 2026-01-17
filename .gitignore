@@ -239,7 +239,13 @@
 /PhpProject1/
 /nbproject/
 vendor/
-#*.jpeg
+
+media/com_elgergasia/
+media/com_elgergasia_1/
+
+
+
+*.jpeg
 # These are some examples of commonly ignored file patterns.
 # You should customize this list as applicable to your project.
 # Learn more about .gitignore:
