@@ -80,7 +80,7 @@ class JobsModel extends ListModel {
             $query -> group( "j.id, j.submitDate, j.stateChangedDate, j.idJobState, jst.jobState, j.daysOff, j.submitDate, j.jobSalary, mc.medicalCare, jt.jobTitle, jt.jobDescription, spt.speciality"
                 . ", g.lat, g.lng, jt.jobCity, j.idSpeciality,j.areasize, j.idSpeciality, submitDate" );
         }
-      
+
         return $query;
 
     }
@@ -205,10 +205,8 @@ class JobsModel extends ListModel {
        
         if ( !$this -> commonUtils ->isOfficeUser()) {
             $whereClauses[] = " j.idJobState = 2 ";
-        } elseif ($this->getState('filter.jobState') == '') {
-           $whereClauses[] = " j.idJobState = 2";
-        } elseif ($this->getState('filter.jobState') != -1) {
-            $whereClauses[] = " j.idJobState = " . $this->getState('filter.jobState');
+        } elseif ($this->getState('filter.jobState') != '') {
+           $whereClauses[] = " j.idJobState = " . $this->getState('filter.jobState');
         }
         
         

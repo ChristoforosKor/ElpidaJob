@@ -246,6 +246,12 @@ media/com_elgergasia_1/
 
 
 *.jpeg
+*.jpg
+*.png
+*.pdf
+*.tgz
+*.sql
+
 # These are some examples of commonly ignored file patterns.
 # You should customize this list as applicable to your project.
 # Learn more about .gitignore:
@@ -406,3 +412,8 @@ Thumbs.db
 /templates/elpidajob_home/js/template.min.js.gz
 /templates/elpidajob_home/css/global/
 /templates/elpidajob_home/css/system/
+
+
+/media/lib_allediaframework/
+/media/plg_system_osmylicensesmanager/
+
