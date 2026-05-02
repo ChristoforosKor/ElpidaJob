@@ -1,5 +1,7 @@
 <?php
 
+use Joomla\CMS\Factory;
+
 class HomeBannersHelper
 {
     /**
@@ -10,8 +12,8 @@ class HomeBannersHelper
      */    
     // public static function getCounts() {
     
-    //     $langTag = JFactory::getLanguage()->getTag();
-    //     $db = JFactory::getDbo();
+    //     $langTag = Factory::getLanguage()->getTag();
+    //     $db = Factory::getDbo();
     //     $query = $db->getQuery(true);
     //     $query  ->  select(" count(*) as sunolo,sj.idSpeciality")
     //     -> from ("#__elg_ergasia_job j") 
@@ -27,8 +29,8 @@ class HomeBannersHelper
 
     public static function getCounts() {
     
-        $langTag = JFactory::getLanguage()->getTag();
-        $db = JFactory::getDbo();
+        $langTag = Factory::getLanguage()->getTag();
+        $db = Factory::getDbo();
         $query = $db->getQuery(true);
         $query  ->  select(" count(distinct cd.id) as sunolo, cs.idSpeciality")
         -> from ("#__contact_details cd") 
@@ -54,8 +56,8 @@ class HomeBannersHelper
 
     public static function getSpeciality() {
     
-        $langTag = JFactory::getLanguage()->getTag();
-        $db = JFactory::getDbo();
+        $langTag = Factory::getLanguage()->getTag();
+        $db = Factory::getDbo();
         $query = $db->getQuery(true);
         $query  ->  select(" sj.idSpeciality, sj.speciality")
         -> from ("#__elg_ergasia_speciality_translation sj ")

@@ -2,11 +2,12 @@
 
 class modElgErgasiaJobLastHelper
 {
+    use Joomla\CMS\Factory;
     public static function getData()
     {
-        $lang = JFactory::getLanguage()->getTag();
+        $lang = Factory::getLanguage()->getTag();
         $data = new stdClass();
-        $db = JFactory::getDbo();
+        $db = Factory::getDbo();
         $query = $db->getQuery(true);
         $query->select("id, ifNull(jt.jobTitle, jd.jobTitle) as jobTitle,  submitDate")
                 ->from("#__elg_ergasia_job j")

@@ -1,5 +1,8 @@
 <?php
 
+use Joomla\CMS\Factory;
+
+
 class HomeCandidatesHelper
 {
     /**
@@ -10,8 +13,8 @@ class HomeCandidatesHelper
      */    
     public static function getData() {
     
-        $langTag = JFactory::getLanguage()->getTag();
-        $db = JFactory::getDbo();
+        $langTag = Factory::getLanguage()->getTag();
+        $db = Factory::getDbo();
         $query = $db->getQuery(true);
         $query  ->  select(" distinct cd.id,  cd.name,  ifNull(cd.address, '') as address ,cd.suburb,
          /*cbt.city,*/ GROUP_CONCAt(distinct cst.speciality) as speciality, GROUP_CONCAt( distinct cst.idSpeciality) as idSpeciality , GROUP_CONCAT( ht.hour ) as hour"

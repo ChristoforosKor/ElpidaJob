@@ -1,7 +1,7 @@
 <?php
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
-
+use Joomla\CMS\Helper\ModuleHelper;
 require_once( dirname(__FILE__).'/jobhourshelper.php' );
 $data = JobHoursHelper::getData();
-require( JModuleHelper::getLayoutPath( 'mod_elgjobhours' ) );
+require( ModuleHelper::getLayoutPath( 'mod_elgjobhours' ) );

@@ -10,6 +10,8 @@
 defined('JPATH_BASE') or die;
 jimport('joomla.application.component.helper');
 require JPATH_SITE . '/components/com_elgergasia/models/datautils.php';
+use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\CMS\Factory;
 /**
  * An example custom profile plugin.
  *
@@ -17,7 +19,7 @@ require JPATH_SITE . '/components/com_elgergasia/models/datautils.php';
  * @subpackage  User.profile
  * @since       1.6
  */
-class plgUserErgasia extends JPlugin
+class plgUserErgasia extends CMSPlugin
 {
 	/**
 	 * Constructor
@@ -47,7 +49,7 @@ class plgUserErgasia extends JPlugin
 	 */
         public function onContentPrepareForm($form, $data) {
 			
-            $inp = JFactory::getApplication()->input;
+            $inp = Factory::getApplication()->input;
             $location = $inp->getString('location');
             JForm::addFormPath(__DIR__ . '/ergasia');
             $form->loadFile('ergasia', false);
@@ -60,10 +62,10 @@ class plgUserErgasia extends JPlugin
             $params = JComponentHelper::getParams('com_elgergasia')->get('params');
            
             if($isNew) {
-                $db = JFactory::getDbo();
+                $db = Factory::getDbo();
                 $query = $db->getQuery(true);
                 $db->setQuery($query);
-                $app = JFactory::getApplication();
+                $app = Factory::getApplication();
                 $Itemid = $app->getMenu()->getActive()->id;
                 $newGroup = 0;
                 $regType = 0;
@@ -78,7 +80,7 @@ class plgUserErgasia extends JPlugin
                 }
                 
                 if($newGroup != 0) {
-                    $user = JFactory::getUser($data['id']);
+                    $user = Factory::getUser($data['id']);
                     if(!in_array($newGroup, $user->groups))
                     {
                         $o = new stdClass();
@@ -104,7 +106,7 @@ class plgUserErgasia extends JPlugin
                             $qs['layout'] = 'candidate';
                            // $qs['idUser'] = $user->id;
                             $qs['id'] = $user->id;
-                            $Itemid = DataUtils::getLanguageItemid($db, $this->params->get('canidate_menu', 196), JFactory::getLanguage()->getTag());
+                            $Itemid = DataUtils::getLanguageItemid($db, $this->params->get('canidate_menu', 196), Factory::getLanguage()->getTag());
                             $qs['Itemid'] = $Itemid;
                             //$u->setQuery($u->buildQuery($qs));
                             // $url = JRoute::_($u->toString(), false);
@@ -114,13 +116,13 @@ class plgUserErgasia extends JPlugin
                             $qs['view']= 'employeredit';
                             unset($qs['layout']);
                             $qs['id'] = $user->id;
-                            $Itemid = DataUtils::getLanguageItemid($db, $this->params->get('employer_menu', 203), JFactory::getLanguage()->getTag());
+                            $Itemid = DataUtils::getLanguageItemid($db, $this->params->get('employer_menu', 203), Factory::getLanguage()->getTag());
                             $qs['Itemid'] = $Itemid;
                             //$u->setQuery($u->buildQuery($qs));
                             break;
                     }
                     
-                    $currentUser = JFactory::getUser();
+                    $currentUser = Factory::getUser();
                     $currentGrps = $currentUser->getAuthorisedGroups();
                     $cBas = new stdClass();
                     $cBas->idState = 1;
@@ -128,9 +130,9 @@ class plgUserErgasia extends JPlugin
                     {
                         
                         $cBas->idUser = $user->id;
-                        $db = JFactory::getDbo();
+                        $db = Factory::getDbo();
                         $db->updateObject('#__elg_ergasia_candidate_basic', $cBas, 'idUser');
-                        //JFactory::getApplication()->redirect($url);
+                        //Factory::getApplication()->redirect($url);
                         //$app->redirect(JRoute::_(implode('&', $qs)));
                         $url = http_build_query($qs, '&');
                     }

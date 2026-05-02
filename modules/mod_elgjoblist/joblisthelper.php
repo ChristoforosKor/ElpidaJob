@@ -7,9 +7,9 @@ class JobListHelper {
     public static function getData() {
         $linkToPage =  Factory::getApplication() -> getMenu() -> getItem(467)  -> route;
         
-        $langTag = JFactory::getLanguage()-> getTag();
+        $langTag = Factory::getLanguage()-> getTag();
         $input = Factory::getApplication() -> input;
-        $db = JFactory::getDbo();
+        $db = Factory::getDbo();
         $query = $db->getQuery(true);
 
         $query->select(" j.id, j.daysOff, j.submitDate, ht.`hour`, j.jobSalary, j.idSpeciality, snt.specialNeed, jt.jobTitle as title, jt.jobDescription as description, g.city, g.lat, g.lng,j.areasize")

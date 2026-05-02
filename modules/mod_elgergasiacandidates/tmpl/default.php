@@ -1,6 +1,7 @@
 <?php // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
-$db = JFactory::getDbo();
+use Joomla\CMS\Factory;
+$db = Factory::getDbo();
 $query = $db->getQuery(true);
 $db->setQuery($query);
 // require_once JPATH_SITE . '/components/com_elgergasia/models/datautils.php';

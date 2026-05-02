@@ -1,11 +1,11 @@
 <?php
-
+use Joomla\CMS\Factory;
 class JobStateHelper {
 
     public static function getData() {
-        $langTag = JFactory::getLanguage()->getTag();
+        $langTag = Factory::getLanguage()->getTag();
         $data = new stdClass();
-        $db = JFactory::getDbo();
+        $db = Factory::getDbo();
         $query = $db->getQuery(true);
         $query->select("ht.idHour, ht.hour")
                 ->from("#__elg_ergasia_hour h")

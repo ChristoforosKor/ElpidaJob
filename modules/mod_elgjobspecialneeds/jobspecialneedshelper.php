@@ -1,11 +1,11 @@
 <?php
-
+use Joomla\CMS\Factory;
 class JobSpecialNeedsHelper {
 
     public static function getData() {
         
-        $langTag = JFactory::getLanguage()->getTag();
-        $db = JFactory::getDbo();
+        $langTag = Factory::getLanguage()->getTag();
+        $db = Factory::getDbo();
         $query = $db->getQuery(true);
         $query->select(" idSpecialNeed, specialneed") 
                 ->from("#__elg_ergasia_specialneeds_translation ")

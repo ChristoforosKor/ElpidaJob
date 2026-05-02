@@ -1,11 +1,13 @@
 <?php
 
+use Joomla\CMS\Factory;
+
 class modElgErgasiaJobStatsHelper
 {
     public static function getData()
     {
         $data = new stdClass();
-        $db = JFactory::getDbo();
+        $db = Factory::getDbo();
         $query = $db->getQuery(true);
         $query->select("count(*)")
                 ->from("#__elg_ergasia_job")

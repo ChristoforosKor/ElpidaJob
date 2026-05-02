@@ -3,7 +3,7 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Factory;
-
+use Joomla\CMS\Helper\ModuleHelper;
 
 require_once( dirname(__FILE__).'/helper.php' );
 //$data = JobStateHelper::getData();
@@ -13,4 +13,4 @@ $app = Factory::getApplication();
 $filters = $app->input->get('filter');
 $stateValue = isset($filters['jobState']) ? $filters['jobState'] : ""; 
 $stateField->setValue($stateValue);
-require( JModuleHelper::getLayoutPath( 'mod_elgjobstate' ) );
+require( ModuleHelper::getLayoutPath( 'mod_elgjobstate' ) );

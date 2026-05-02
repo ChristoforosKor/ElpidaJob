@@ -3,7 +3,7 @@ namespace ELG\Component\ElgJobs\Site;
 
 use Joomla\CMS\Image\Image;
 use Joomla\CMS\Factory;
- use Joomla\CMS\Filesystem\File;
+use Joomla\CMS\Filesystem\File;
 class CommonUtils {
    
   
@@ -52,7 +52,7 @@ class CommonUtils {
      */
     public  function getListParams($input, $sessionNamespace, $defaultOrder, $defaultOrderDir='asc') {
         $listParams = array();
-        $session = JFactory::getSession();
+        $session = Factory::getSession();
         $params = self::getComponentParams();
         $listParams['limitstart'] = ($input->getInt('cp',0) == 1? $input->getInt('limitstart', 0): 0); 
         $listParams['limit'] = self::getRequestNoNull('limit', $params->get('listLimit', 50), $input->getInt('limit', null), $session, $sessionNamespace); 
