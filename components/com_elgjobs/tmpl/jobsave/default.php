@@ -186,7 +186,7 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <!-- script type="text/javascript" src="/media/com_elgjobs/js/select2.min.js"></script -->
 <script type="text/javascript" src="/media/com_elgjobs/js/job.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7Oog-QtyWDsOmTz2nZ2TwUgRLLfFP-D4&libraries=places&callback=editJobMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQQbqWgJ_103uyBJWra_vo4MmQSp8uE1k&libraries=places&callback=editJobMap" async defer></script>
 
 <script>
 

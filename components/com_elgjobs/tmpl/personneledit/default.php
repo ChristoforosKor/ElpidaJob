@@ -289,7 +289,7 @@ if ($this->isAuthorised == 1 and isset($this->item['documents'])) :
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <!-- script type="text/javascript" src="/media/com_elgjobs/js/select2.min.js"></script -->
 <script type="text/javascript" src="/media/com_elgjobs/js/personnel.js?ver=2"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-9qfMB-qsZEI_1fvdReXA095SCXOqxlY&libraries=places&callback=editJobMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQQbqWgJ_103uyBJWra_vo4MmQSp8uE1k&libraries=places&callback=editJobMap" async defer></script>
 
 <script>
 
